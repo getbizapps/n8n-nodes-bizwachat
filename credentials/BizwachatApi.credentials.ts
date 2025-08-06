@@ -29,7 +29,7 @@ export class BizwachatApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: `${BASE_DOMAIN}/api`,
-			url: '/check-api-key-across-projects',
+			url: '/check-api-key',
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',

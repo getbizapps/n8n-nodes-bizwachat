@@ -11,7 +11,10 @@
   ],
   "license": "MIT",
   "homepage": "https://www.bizwachat.com/",
-  "author": "Bizwachat <hello@bizwachat.com>",
+  "author": {
+    "name": "Bizwachat",
+    "email": "hello@bizwachat.com"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/getbizapps/n8n-nodes-bizwachat.git"
