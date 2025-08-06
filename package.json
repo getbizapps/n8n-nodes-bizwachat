@@ -1,0 +1,74 @@
+{
+  "name": "n8n-nodes-bizwachat",
+  "version": "2.1.2",
+  "description": "Bizwachat is a platform for automating WhatsApp messages, making it easy to start using the WhatsApp API. This node package allows you to use Bizwachat in n8n.",
+  "keywords": [
+    "n8n-community-node-package",
+    "whatsapp",
+    "messaging",
+    "bizwachat",
+    "automation"
+  ],
+  "license": "MIT",
+  "homepage": "https://www.bizwachat.com/",
+  "author": {
+    "name": "Bizwachat",
+    "email": "hello@bizwachat.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BizwaChat/n8n-nodes-bizwachat.git"
+  },
+  "engines": {
+    "node": ">=18.10"
+  },
+  "packageManager": "pnpm@9.1.4",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "nodemon -w nodes -w credentials --ext ts --exec \"tsc && n8n\"",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE.md",
+    "index.js"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/BizwachatApi.credentials.js",
+      "dist/credentials/BizwachatNotifierApi.credentials.js",
+      "dist/credentials/BizwachatNotifyerApi.credentials.js",
+      "dist/credentials/BizwachatTriggerApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Bizwachat/Bizwachat.node.js",
+      "dist/nodes/Bizwachat/BizwachatTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^24.2.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.1",
+    "gulp": "^4.0.2",
+    "jest": "^29.7.0",
+    "n8n": "^1.89.2",
+    "nock": "^13.5.4",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.3.2",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

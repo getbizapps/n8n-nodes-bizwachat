@@ -1,0 +1,2355 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Swiftchats",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://swiftchats.axis96.xyz"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Contacts"
+    },
+    {
+      "name": "Contact Groups"
+    },
+    {
+      "name": "Canned Replies"
+    }
+  ],
+  "paths": {
+    "/api/contacts": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "contacts",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:29:14 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": 1,
+                      "uuid": "2a8ccb5e-0392-491f-90be-b4d02c24754e",
+                      "organization_id": 7,
+                      "first_name": "Jennifer",
+                      "last_name": "Hudson",
+                      "phone": "254720055819",
+                      "email": "jennifer@gmail.com",
+                      "avatar": null,
+                      "address": "{\"street\":\"Kimathi\",\"city\":\"Nairobi\",\"state\":\"Nairobi\",\"zip\":\"00516\",\"country\":\"Kenya\"}",
+                      "contact_group_id": 1,
+                      "is_favorite": 1,
+                      "created_by": 5,
+                      "created_at": "2024-04-06 19:52:17",
+                      "updated_at": "2024-04-06 19:54:00",
+                      "deleted_at": null,
+                      "full_name": "Jennifer Hudson"
+                    },
+                    {
+                      "id": 2,
+                      "uuid": "c4a9223d-c6eb-43d8-b690-723cebe19ed7",
+                      "organization_id": 7,
+                      "first_name": "Jack",
+                      "last_name": "Reacher",
+                      "phone": "254717798628",
+                      "email": "jackreacher@gmail.com",
+                      "avatar": null,
+                      "address": "{\"street\":\"Ngong Rd\",\"city\":\"Nakuru\",\"state\":\"Naivasha\",\"zip\":\"002372\",\"country\":\"Tanzania\"}",
+                      "contact_group_id": 1,
+                      "is_favorite": 0,
+                      "created_by": 5,
+                      "created_at": "2024-04-06 19:55:17",
+                      "updated_at": "2024-04-06 19:55:57",
+                      "deleted_at": null,
+                      "full_name": "Jack Reacher"
+                    },
+                    {
+                      "id": 4,
+                      "uuid": "477cd721-1e24-4690-8d11-1b80b8343820",
+                      "organization_id": 7,
+                      "first_name": "Alex",
+                      "last_name": "Bridgertone",
+                      "phone": "254718068796",
+                      "email": "alex@gmail.com",
+                      "avatar": null,
+                      "address": "{\"street\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":null}",
+                      "contact_group_id": null,
+                      "is_favorite": 0,
+                      "created_by": 0,
+                      "created_at": "2024-04-09 09:36:26",
+                      "updated_at": "2024-04-09 09:36:26",
+                      "deleted_at": null,
+                      "full_name": "Alex Bridgertone"
+                    },
+                    {
+                      "id": 5,
+                      "uuid": "f38565ee-1c72-4929-bfde-304d6cb7c9b5",
+                      "organization_id": 7,
+                      "first_name": "Kevin",
+                      "last_name": "Kelly",
+                      "phone": "254720707125",
+                      "email": "kevin@gmail.com",
+                      "avatar": null,
+                      "address": "{\"street\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":null}",
+                      "contact_group_id": null,
+                      "is_favorite": 0,
+                      "created_by": 0,
+                      "created_at": "2024-04-09 09:39:03",
+                      "updated_at": "2024-04-09 10:19:41",
+                      "deleted_at": null,
+                      "full_name": "Kevin Kelly"
+                    },
+                    {
+                      "id": 6,
+                      "uuid": "945d8b4f-a580-4743-bdfa-f0095059b37a",
+                      "organization_id": 7,
+                      "first_name": "Marvin",
+                      "last_name": "Osumba",
+                      "phone": "254725578277",
+                      "email": "marvin27@gmail.com",
+                      "avatar": null,
+                      "address": "{\"street\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":null}",
+                      "contact_group_id": null,
+                      "is_favorite": 0,
+                      "created_by": 0,
+                      "created_at": "2024-04-09 10:21:50",
+                      "updated_at": "2024-04-09 10:30:06",
+                      "deleted_at": null,
+                      "full_name": "Marvin Osumba"
+                    },
+                    {
+                      "id": 7,
+                      "uuid": "50e5162b-17a5-47d1-8595-48d52b0e3583",
+                      "organization_id": 7,
+                      "first_name": "Jeffrey",
+                      "last_name": "Mwangi",
+                      "phone": "254722562087",
+                      "email": "mwangi@gmail.com",
+                      "avatar": null,
+                      "address": "{\"street\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":null}",
+                      "contact_group_id": null,
+                      "is_favorite": 0,
+                      "created_by": 0,
+                      "created_at": "2024-04-09 10:25:06",
+                      "updated_at": "2024-04-09 10:25:06",
+                      "deleted_at": null,
+                      "full_name": "Jeffrey Mwangi"
+                    },
+                    {
+                      "id": 8,
+                      "uuid": "eeb71d1d-8e63-42a9-b523-39feeb7b936c",
+                      "organization_id": 7,
+                      "first_name": "Juma",
+                      "last_name": "Waweru",
+                      "phone": "254711232323",
+                      "email": "waweru@gmail.com",
+                      "avatar": null,
+                      "address": "{\"street\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":null}",
+                      "contact_group_id": 3,
+                      "is_favorite": 0,
+                      "created_by": 5,
+                      "created_at": "2024-04-09 13:11:24",
+                      "updated_at": "2024-04-09 13:11:24",
+                      "deleted_at": null,
+                      "full_name": "Juma Waweru"
+                    },
+                    {
+                      "id": 9,
+                      "uuid": "a75c3442-25d5-4656-93d5-d54e1f03c7e6",
+                      "organization_id": 7,
+                      "first_name": "Jeffrey",
+                      "last_name": "Mwangi",
+                      "phone": "254722562088",
+                      "email": "mwangi@gmail.com",
+                      "avatar": null,
+                      "address": "{\"street\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":null}",
+                      "contact_group_id": null,
+                      "is_favorite": 0,
+                      "created_by": 0,
+                      "created_at": "2024-04-09 16:27:52",
+                      "updated_at": "2024-04-09 16:27:52",
+                      "deleted_at": null,
+                      "full_name": "Jeffrey Mwangi"
+                    },
+                    {
+                      "id": 10,
+                      "uuid": "3e2b2ce2-f4cb-4aa8-9f35-5014ed7c9b59",
+                      "organization_id": 7,
+                      "first_name": null,
+                      "last_name": null,
+                      "phone": "254720055819",
+                      "email": null,
+                      "avatar": null,
+                      "address": null,
+                      "contact_group_id": null,
+                      "is_favorite": 0,
+                      "created_by": 0,
+                      "created_at": null,
+                      "updated_at": null,
+                      "deleted_at": null,
+                      "full_name": " "
+                    },
+                    {
+                      "id": 11,
+                      "uuid": "f9599c47-e7b7-4a92-b71c-0f2e3e29fe0d",
+                      "organization_id": 7,
+                      "first_name": null,
+                      "last_name": null,
+                      "phone": "254720055819",
+                      "email": null,
+                      "avatar": null,
+                      "address": null,
+                      "contact_group_id": null,
+                      "is_favorite": 0,
+                      "created_by": 0,
+                      "created_at": null,
+                      "updated_at": null,
+                      "deleted_at": null,
+                      "full_name": " "
+                    }
+                  ],
+                  "links": {
+                    "first": "http://whatsappsender.test/api/contacts?page=1",
+                    "last": "http://whatsappsender.test/api/contacts?page=2",
+                    "prev": null,
+                    "next": "http://whatsappsender.test/api/contacts?page=2"
+                  },
+                  "meta": {
+                    "current_page": 1,
+                    "from": 1,
+                    "last_page": 2,
+                    "links": [
+                      {
+                        "url": null,
+                        "label": "&laquo; Previous",
+                        "active": false
+                      },
+                      {
+                        "url": "http://whatsappsender.test/api/contacts?page=1",
+                        "label": "1",
+                        "active": true
+                      },
+                      {
+                        "url": "http://whatsappsender.test/api/contacts?page=2",
+                        "label": "2",
+                        "active": false
+                      },
+                      {
+                        "url": "http://whatsappsender.test/api/contacts?page=2",
+                        "label": "Next &raquo;",
+                        "active": false
+                      }
+                    ],
+                    "path": "http://whatsappsender.test/api/contacts",
+                    "per_page": 10,
+                    "to": 10,
+                    "total": 12
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "contacts",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "first_name": "Jeffrey",
+                  "last_name": "Mwangi",
+                  "email": "mwangi@gmail.com",
+                  "phone": "+254722562088"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:29:53 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "57"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "id": "4febd07e-6097-45eb-9739-8ce7f4a51aa1",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/contacts/{uuid}": {
+      "put": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "contacts/{id}",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "first_name": "Marvin",
+                  "last_name": "Osumba",
+                  "email": "marvin27@gmail.com",
+                  "phone": "+254725578277"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:30:41 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "id": "945d8b4f-a580-4743-bdfa-f0095059b37a",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "contacts/{uuid}",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:31:12 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "id": "945d8b4f-a580-4743-bdfa-f0095059b37a",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/contact-groups": {
+      "get": {
+        "tags": [
+          "Contact Groups"
+        ],
+        "summary": "contact-groups",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:44:10 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": 1,
+                      "uuid": "c7c1ba3f-4abf-4516-9e2b-10b03a957254",
+                      "organization_id": 7,
+                      "name": "Leads1",
+                      "created_by": 5,
+                      "created_at": "2024-04-06T14:07:22.000000Z",
+                      "updated_at": "2024-04-06T19:59:50.000000Z",
+                      "deleted_at": null
+                    },
+                    {
+                      "id": 3,
+                      "uuid": "37a4ce08-6f2a-4cb2-bd2d-e724ce1508ed",
+                      "organization_id": 7,
+                      "name": "Lead 3",
+                      "created_by": 0,
+                      "created_at": "2024-04-09T10:53:36.000000Z",
+                      "updated_at": "2024-04-09T10:53:36.000000Z",
+                      "deleted_at": null
+                    },
+                    {
+                      "id": 5,
+                      "uuid": "2dc450a8-329a-47e0-82ed-66cdf1e8730f",
+                      "organization_id": 7,
+                      "name": "Lead 4",
+                      "created_by": 0,
+                      "created_at": "2024-04-09T13:32:24.000000Z",
+                      "updated_at": "2024-04-09T13:32:24.000000Z",
+                      "deleted_at": null
+                    }
+                  ],
+                  "links": {
+                    "first": "http://whatsappsender.test/api/contact-groups?page=1",
+                    "last": "http://whatsappsender.test/api/contact-groups?page=1",
+                    "prev": null,
+                    "next": null
+                  },
+                  "meta": {
+                    "current_page": 1,
+                    "from": 1,
+                    "last_page": 1,
+                    "links": [
+                      {
+                        "url": null,
+                        "label": "&laquo; Previous",
+                        "active": false
+                      },
+                      {
+                        "url": "http://whatsappsender.test/api/contact-groups?page=1",
+                        "label": "1",
+                        "active": true
+                      },
+                      {
+                        "url": null,
+                        "label": "Next &raquo;",
+                        "active": false
+                      }
+                    ],
+                    "path": "http://whatsappsender.test/api/contact-groups",
+                    "per_page": 10,
+                    "to": 3,
+                    "total": 3
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contact Groups"
+        ],
+        "summary": "contact-groups",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Lead 4"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:44:24 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "id": "67b9e3ea-a73c-43a7-b0f2-203c429531c7",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/contact-groups/{uuid}": {
+      "put": {
+        "tags": [
+          "Contact Groups"
+        ],
+        "summary": "contact-groups/{uuid}",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Lead 5"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:44:38 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "57"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "id": "67b9e3ea-a73c-43a7-b0f2-203c429531c7",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Contact Groups"
+        ],
+        "summary": "contact-groups/{uuid}",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:45:11 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "id": "67b9e3ea-a73c-43a7-b0f2-203c429531c7",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/canned-replies": {
+      "get": {
+        "tags": [
+          "Canned Replies"
+        ],
+        "summary": "canned-replies",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:39:23 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": 1,
+                      "uuid": "80552ad3-ae00-4047-8937-ddeb8513d513",
+                      "organization_id": 7,
+                      "name": "Hello Reply",
+                      "trigger": "Hello",
+                      "match_criteria": "exact match",
+                      "metadata": "{\"type\":\"text\",\"data\":{\"text\":\"Hello there, how can I help you?\"}}",
+                      "created_by": 5,
+                      "deleted_by": null,
+                      "deleted_at": null,
+                      "created_at": "2024-04-06 20:11:44",
+                      "updated_at": "2024-04-06 20:11:44"
+                    },
+                    {
+                      "id": 3,
+                      "uuid": "cc505ae6-4dca-4312-b75e-1c78db6ab8d4",
+                      "organization_id": 7,
+                      "name": "Service Response",
+                      "trigger": "what are your services?",
+                      "match_criteria": "contains",
+                      "metadata": "{\"type\":\"text\",\"data\":{\"text\":\"We are involved in litigation, tax and business consultancy.\"}}",
+                      "created_by": 5,
+                      "deleted_by": null,
+                      "deleted_at": null,
+                      "created_at": "2024-04-09 13:12:38",
+                      "updated_at": "2024-04-09 13:12:38"
+                    },
+                    {
+                      "id": 4,
+                      "uuid": "e08a0135-3175-4a66-96f4-cc941e383161",
+                      "organization_id": 7,
+                      "name": "About Us",
+                      "trigger": "what do you do?",
+                      "match_criteria": "contains",
+                      "metadata": "{\"type\":\"text\",\"data\":{\"text\":\"We sell shoes\"}}",
+                      "created_by": 0,
+                      "deleted_by": null,
+                      "deleted_at": null,
+                      "created_at": "2024-04-09 13:49:57",
+                      "updated_at": "2024-04-09 13:49:57"
+                    },
+                    {
+                      "id": 5,
+                      "uuid": "412779bb-95d7-4a39-ae78-9f8d720f6c93",
+                      "organization_id": 7,
+                      "name": "About Us",
+                      "trigger": "what do you do?",
+                      "match_criteria": "contains",
+                      "metadata": "{\"type\":\"text\",\"data\":{\"text\":\"We sell shoes\"}}",
+                      "created_by": 0,
+                      "deleted_by": null,
+                      "deleted_at": null,
+                      "created_at": "2024-04-09 13:50:27",
+                      "updated_at": "2024-04-09 13:50:27"
+                    },
+                    {
+                      "id": 6,
+                      "uuid": "9d3015ba-2532-4817-b892-0835e16817f4",
+                      "organization_id": 7,
+                      "name": "About Us",
+                      "trigger": "what do you do?",
+                      "match_criteria": "contains",
+                      "metadata": "{\"type\":\"text\",\"data\":{\"text\":\"We sell shoes and clothes\"}}",
+                      "created_by": 0,
+                      "deleted_by": null,
+                      "deleted_at": null,
+                      "created_at": "2024-04-09 13:51:24",
+                      "updated_at": "2024-04-09 13:52:39"
+                    }
+                  ],
+                  "links": {
+                    "first": "http://whatsappsender.test/api/canned-replies?page=1",
+                    "last": "http://whatsappsender.test/api/canned-replies?page=1",
+                    "prev": null,
+                    "next": null
+                  },
+                  "meta": {
+                    "current_page": 1,
+                    "from": 1,
+                    "last_page": 1,
+                    "links": [
+                      {
+                        "url": null,
+                        "label": "&laquo; Previous",
+                        "active": false
+                      },
+                      {
+                        "url": "http://whatsappsender.test/api/canned-replies?page=1",
+                        "label": "1",
+                        "active": true
+                      },
+                      {
+                        "url": null,
+                        "label": "Next &raquo;",
+                        "active": false
+                      }
+                    ],
+                    "path": "http://whatsappsender.test/api/canned-replies",
+                    "per_page": 10,
+                    "to": 5,
+                    "total": 5
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Canned Replies"
+        ],
+        "summary": "canned-replies",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "About Us",
+                  "trigger": "what do you do?",
+                  "match_criteria": "contains",
+                  "response_type": "text",
+                  "response": "We sell shoes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:39:36 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "id": "a759be89-6135-4503-8ff2-0c914da21e4a",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/canned-replies/{uuid}": {
+      "put": {
+        "tags": [
+          "Canned Replies"
+        ],
+        "summary": "canned-replies/{uuid}",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "About Us",
+                  "trigger": "what do you do?",
+                  "match_criteria": "contains",
+                  "response_type": "text",
+                  "response": "We sell shoes and clothes"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:39:57 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "57"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "id": "a759be89-6135-4503-8ff2-0c914da21e4a",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Canned Replies"
+        ],
+        "summary": "canned-replies/{uuid}",
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:40:25 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "id": "a759be89-6135-4503-8ff2-0c914da21e4a",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/send": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Send Message",
+        "description": "\n## API POST /api/send\n\nThis endpoint allows you to send a message to a specified phone number.\n\n### Request Body\n- `phone` (string, required): The phone number to which the message will be sent.\n- `message` (string, required): The content of the message to be sent.\n\n### Response\n- Status: 404\n- Content-Type: text/html\n\nThe response will be a 404 Not Found error if the requested resource is not available.\n\n#### Example Response\n```json\n{\n    \"statusCode\": 0,\n    \"data\": {\n        \"success\": true,\n        \"data\": {\n            \"messaging_product\": \"\",\n            \"contacts\": [\n                {\n                    \"input\": \"\",\n                    \"wa_id\": \"\"\n                }\n            ],\n            \"messages\": [\n                {\n                    \"id\": \"\"\n                }\n            ],\n            \"chat\": {\n                \"id\": 0,\n                \"uuid\": \"\",\n                \"organization_id\": 0,\n                \"wam_id\": \"\",\n                \"contact_id\": 0,\n                \"type\": \"\",\n                \"metadata\": \"\",\n                \"media_id\": null,\n                \"status\": \"\",\n                \"deleted_by\": null,\n                \"deleted_at\": null,\n                \"created_at\": \"\",\n                \"contact\": {\n                    \"id\": 0,\n                    \"uuid\": \"\",\n                    \"organization_id\": 0,\n                    \"first_name\": null,\n                    \"last_name\": null,\n                    \"phone\": \"\",\n                    \"email\": null,\n                    \"avatar\": null,\n                    \"address\": null,\n                    \"contact_group_id\": null,\n                    \"is_favorite\": 0,\n                    \"created_by\": 0,\n                    \"created_at\": null,\n                    \"updated_at\": null,\n                    \"deleted_at\": null,\n                    \"full_name\": \"\"\n                },\n                \"media\": null\n            }\n        }\n    }\n}\n```\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "phone": "+254720055819",
+                  "message": "Hello John, how are you?",
+                  "header": "Test header",
+                  "footer": "Test footer",
+                  "buttons": [
+                    {
+                      "id": "fine_1",
+                      "title": "I'm fine"
+                    },
+                    {
+                      "id": "bad_2",
+                      "title": "I'm not well"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.4"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.22"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 12 Apr 2024 09:08:49 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "data": {
+                    "success": true,
+                    "data": {
+                      "messaging_product": "whatsapp",
+                      "contacts": [
+                        {
+                          "input": "254720055819",
+                          "wa_id": "254720055819"
+                        }
+                      ],
+                      "messages": [
+                        {
+                          "id": "wamid.HBgMMjU0NzIwMDU1ODE5FQIAERgSQjY3NEYwN0RENzM2REVDNkIzAA=="
+                        }
+                      ],
+                      "chat": {
+                        "id": 78,
+                        "uuid": "43065393-3505-43b7-be89-11e1329e41be",
+                        "organization_id": 7,
+                        "wam_id": "wamid.HBgMMjU0NzIwMDU1ODE5FQIAERgSQjY3NEYwN0RENzM2REVDNkIzAA==",
+                        "contact_id": 13,
+                        "type": "outbound",
+                        "metadata": "{\"text\":{\"body\":\"Hello John, how are you?\"},\"type\":\"text\"}",
+                        "media_id": null,
+                        "status": "delivered",
+                        "deleted_by": null,
+                        "deleted_at": null,
+                        "created_at": "2024-04-12 12:08:48",
+                        "contact": {
+                          "id": 13,
+                          "uuid": "b4eaafb6-12d5-457e-9a53-124f30075dfa",
+                          "organization_id": 7,
+                          "first_name": null,
+                          "last_name": null,
+                          "phone": "254720055819",
+                          "email": null,
+                          "avatar": null,
+                          "address": null,
+                          "contact_group_id": null,
+                          "is_favorite": 0,
+                          "created_by": 0,
+                          "created_at": null,
+                          "updated_at": null,
+                          "deleted_at": null,
+                          "full_name": " "
+                        },
+                        "media": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/send/template": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Send Template Message",
+        "description": "\n## API POST /api/send\n\nThis endpoint allows you to send a message to a specified phone number.\n\n### Request Body\n- `phone` (string, required): The phone number to which the message will be sent.\n- `message` (string, required): The content of the message to be sent.\n\n### Response\n- Status: 404\n- Content-Type: text/html\n\nThe response will be a 404 Not Found error if the requested resource is not available.\n\n#### Example Response\n```json\n{\n    \"statusCode\": 0,\n    \"data\": {\n        \"success\": true,\n        \"data\": {\n            \"messaging_product\": \"\",\n            \"contacts\": [\n                {\n                    \"input\": \"\",\n                    \"wa_id\": \"\"\n                }\n            ],\n            \"messages\": [\n                {\n                    \"id\": \"\"\n                }\n            ],\n            \"chat\": {\n                \"id\": 0,\n                \"uuid\": \"\",\n                \"organization_id\": 0,\n                \"wam_id\": \"\",\n                \"contact_id\": 0,\n                \"type\": \"\",\n                \"metadata\": \"\",\n                \"media_id\": null,\n                \"status\": \"\",\n                \"deleted_by\": null,\n                \"deleted_at\": null,\n                \"created_at\": \"\",\n                \"contact\": {\n                    \"id\": 0,\n                    \"uuid\": \"\",\n                    \"organization_id\": 0,\n                    \"first_name\": null,\n                    \"last_name\": null,\n                    \"phone\": \"\",\n                    \"email\": null,\n                    \"avatar\": null,\n                    \"address\": null,\n                    \"contact_group_id\": null,\n                    \"is_favorite\": 0,\n                    \"created_by\": 0,\n                    \"created_at\": null,\n                    \"updated_at\": null,\n                    \"deleted_at\": null,\n                    \"full_name\": \"\"\n                },\n                \"media\": null\n            }\n        }\n    }\n}\n```\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "phone": "+254720055819",
+                  "template": {
+                    "name": "hello_world",
+                    "language": {
+                      "code": "en_US"
+                    },
+                    "components": [
+                      {
+                        "type": "body",
+                        "parameters": [
+                          {
+                            "type": "text",
+                            "text": "Daniel"
+                          },
+                          {
+                            "type": "text",
+                            "text": "14"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.5"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.28"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 01 Jul 2024 10:27:38 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "data": {
+                    "success": true,
+                    "data": {
+                      "messaging_product": "whatsapp",
+                      "contacts": [
+                        {
+                          "input": "+254720055819",
+                          "wa_id": "254720055819"
+                        }
+                      ],
+                      "messages": [
+                        {
+                          "id": "wamid.HBgMMjU0NzIwMDU1ODE5FQIAERgSOTBCNUMxNUY2MzVGQjIyMUU1AA==",
+                          "message_status": "accepted"
+                        }
+                      ],
+                      "chat": {
+                        "organization_id": 3,
+                        "wam_id": "wamid.HBgMMjU0NzIwMDU1ODE5FQIAERgSOTBCNUMxNUY2MzVGQjIyMUU1AA==",
+                        "contact_id": 1,
+                        "type": "outbound",
+                        "metadata": "{\"type\":\"text\",\"text\":{\"body\":\"Are you interested in quoting. Please send more details here.\",\"footer\":\"carplans a div of Socovered\"},\"buttons\":[{\"type\":\"QUICK_REPLY\",\"text\":\"Car insurance\",\"value\":\"Car insurance\"},{\"type\":\"QUICK_REPLY\",\"text\":\"Home Insurance\",\"value\":\"Home Insurance\"},{\"type\":\"QUICK_REPLY\",\"text\":\"Building insurance\",\"value\":\"Building insurance\"}]}",
+                        "media_id": null,
+                        "status": "accepted",
+                        "created_at": "2024-07-01 10:27:37",
+                        "uuid": "9196ab05-813f-4037-a323-c890b997ee0b",
+                        "id": 14
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/send/media": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Send Media Message",
+        "description": "\n## API POST /api/send\n\nThis endpoint allows you to send a message to a specified phone number.\n\n### Request Body\n- `phone` (string, required): The phone number to which the message will be sent.\n- `message` (string, required): The content of the message to be sent.\n\n### Response\n- Status: 404\n- Content-Type: text/html\n\nThe response will be a 404 Not Found error if the requested resource is not available.\n\n#### Example Response\n```json\n{\n    \"statusCode\": 0,\n    \"data\": {\n        \"success\": true,\n        \"data\": {\n            \"messaging_product\": \"\",\n            \"contacts\": [\n                {\n                    \"input\": \"\",\n                    \"wa_id\": \"\"\n                }\n            ],\n            \"messages\": [\n                {\n                    \"id\": \"\"\n                }\n            ],\n            \"chat\": {\n                \"id\": 0,\n                \"uuid\": \"\",\n                \"organization_id\": 0,\n                \"wam_id\": \"\",\n                \"contact_id\": 0,\n                \"type\": \"\",\n                \"metadata\": \"\",\n                \"media_id\": null,\n                \"status\": \"\",\n                \"deleted_by\": null,\n                \"deleted_at\": null,\n                \"created_at\": \"\",\n                \"contact\": {\n                    \"id\": 0,\n                    \"uuid\": \"\",\n                    \"organization_id\": 0,\n                    \"first_name\": null,\n                    \"last_name\": null,\n                    \"phone\": \"\",\n                    \"email\": null,\n                    \"avatar\": null,\n                    \"address\": null,\n                    \"contact_group_id\": null,\n                    \"is_favorite\": 0,\n                    \"created_by\": 0,\n                    \"created_at\": null,\n                    \"updated_at\": null,\n                    \"deleted_at\": null,\n                    \"full_name\": \"\"\n                },\n                \"media\": null\n            }\n        }\n    }\n}\n```\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "phone": "+254720055819",
+                  "media_type": "image",
+                  "media_url": "https://images.pexels.com/photos/276267/pexels-photo-276267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                  "caption": "your caption for image or video media types",
+                  "file_name": "testFile"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "schema": {
+                  "type": "number",
+                  "example": "nginx/1.25.5"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Transfer-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "number",
+                  "example": "PHP/8.1.28"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 28 Jun 2024 13:44:34 GMT"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Content-Encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "statusCode": 200,
+                  "data": {
+                    "success": true,
+                    "data": {
+                      "messaging_product": "whatsapp",
+                      "contacts": [
+                        {
+                          "input": "+254720055819",
+                          "wa_id": "254720055819"
+                        }
+                      ],
+                      "messages": [
+                        {
+                          "id": "wamid.HBgMMjU0NzIwMDU1ODE5FQIAERgSMzJEODk0QjY5MDdENDk1RTNCAA=="
+                        }
+                      ],
+                      "chat": {
+                        "id": 13,
+                        "uuid": "d3479935-7aac-43de-8dc3-8568d04b0104",
+                        "organization_id": 3,
+                        "wam_id": "wamid.HBgMMjU0NzIwMDU1ODE5FQIAERgSMzJEODk0QjY5MDdENDk1RTNCAA==",
+                        "contact_id": 1,
+                        "user_id": null,
+                        "type": "outbound",
+                        "metadata": "{\"id\":\"wamid.HBgMMjU0NzIwMDU1ODE5FQIAERgSMzJEODk0QjY5MDdENDk1RTNCAA==\",\"type\":\"image\",\"image\":{\"mime_type\":\"image\\/jpeg\"}}",
+                        "media_id": 2,
+                        "status": "sent",
+                        "deleted_by": null,
+                        "deleted_at": null,
+                        "created_at": "2024-06-28 16:44:34",
+                        "contact": {
+                          "id": 1,
+                          "uuid": "3d3f9de5-52eb-412c-93aa-1e66a6a86489",
+                          "organization_id": 3,
+                          "first_name": "John",
+                          "last_name": "Doe",
+                          "phone": "+254720055819",
+                          "email": null,
+                          "avatar": "/media/public/9ZiTT2SWyPoIj5TdHQl2VF7Xgy9JoaBNjH19vEWh.jpg",
+                          "address": "{\"street\":null,\"city\":null,\"state\":null,\"zip\":null,\"country\":null}",
+                          "metadata": "null",
+                          "contact_group_id": null,
+                          "is_favorite": 0,
+                          "created_by": 6,
+                          "created_at": "2024-06-07 19:58:35",
+                          "updated_at": "2024-06-07 19:58:35",
+                          "deleted_at": null,
+                          "full_name": "John Doe",
+                          "formatted_phone_number": "+254 720 055819"
+                        },
+                        "media": {
+                          "id": 2,
+                          "name": "testFile",
+                          "path": "https://images.pexels.com/photos/276267/pexels-photo-276267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                          "location": "amazon",
+                          "type": "image/jpeg",
+                          "size": "517102",
+                          "created_at": "2024-06-28 16:44:34"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

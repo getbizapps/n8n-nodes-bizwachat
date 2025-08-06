@@ -1,0 +1,28 @@
+---
+title: 'Send Message'
+openapi: 'POST /api/send'
+---
+
+
+```
+curl --request POST \
+  --url https://swiftchats.axis96.xyz/api/send \
+  --header 'Authorization: Bearer <token>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "phone": "+254720055819",
+  "message": "Hello John, how are you?",
+  "header": "Test header",
+  "footer": "Test footer",
+  "buttons": [
+    {
+      "id": "fine_1",
+      "title": "I'\''m fine"
+    },
+    {
+      "id": "bad_2",
+      "title": "I'\''m not well"
+    }
+  ]
+}'
+```

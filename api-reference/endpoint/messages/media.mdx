@@ -1,0 +1,38 @@
+
+---
+title: 'To upload Media to Bizwachat Server'
+openapi: 'POST /api/upload/media'
+---
+
+```
+curl --location 'https://bizwachat.com/api/upload/media' \
+--header 'Authorization: Bearer MWGwWsqdkjlfljl' \
+--form 'file=@"/Users/bhavikfuletra/Downloads/ru-travel.png"' \
+--form 'organization="1"'
+```
+
+
+
+
+
+---
+title: 'Send Media'
+openapi: 'POST /api/send/media'
+---
+
+To send media if the image is not public you can easily upload it using upload media to bizwachat server and then send it.
+```
+
+curl --request POST \
+  --url https://swiftchats.axis96.xyz/api/send/media \
+  --header 'Authorization: Bearer <token>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "phone": "+254720055819",
+  "media_type": "image",
+  "media_url": "https://images.pexels.com/photos/276267/pexels-photo-276267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  "caption": "your caption for image or video media types",
+  "file_name": "testFile"
+}'
+
+```
