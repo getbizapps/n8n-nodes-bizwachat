@@ -56,7 +56,7 @@
     "n8n-workflow": "*"
   },
   "dependencies": {
-    "n8n-bizwachat-openapi-node": "^0.1.0"
+    "n8n-bizwachat-openapi-node": "^1.0.0"
   },
   "bugs": {
     "url": "https://github.com/getbizapps/n8n-nodes-bizwachat/issues"
