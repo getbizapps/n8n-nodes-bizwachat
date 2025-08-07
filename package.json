@@ -11,10 +11,7 @@
   ],
   "license": "MIT",
   "homepage": "https://www.bizwachat.com/",
-  "author": {
-    "name": "Bizwachat",
-    "email": "hello@bizwachat.com"
-  },
+  "author": "Bizwachat <hello@bizwachat.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/getbizapps/n8n-nodes-bizwachat.git"
@@ -46,32 +43,23 @@
       "dist/credentials/BizwachatApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/Bizwachat/Bizwachat.node.js",
-      "dist/nodes/Bizwachat/BizwachatTrigger.node.js"
+      "dist/nodes/Bizwachat/Bizwachat.node.js"
     ]
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/node": "^24.2.0",
-    "@typescript-eslint/parser": "^7.15.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-n8n-nodes-base": "^1.16.1",
+    "@typescript-eslint/parser": "~5.45",
+    "eslint-plugin-n8n-nodes-base": "^1.11.0",
     "gulp": "^4.0.2",
-    "jest": "^29.7.0",
-    "n8n": "^1.89.2",
-    "nock": "^13.5.4",
-    "nodemon": "^3.1.10",
-    "prettier": "^3.3.2",
-    "ts-jest": "^29.1.2",
-    "typescript": "^5.5.3"
+    "n8n-workflow": "~1.48.0",
+    "prettier": "^2.7.1",
+    "typescript": "~4.8.4"
   },
   "peerDependencies": {
     "n8n-workflow": "*"
   },
   "dependencies": {
-    "global": "^4.4.0",
-    "npmrc": "^1.1.1"
-  },
+    "n8n-bizwachat-openapi-node": "^0.1.0"
+  }
   "directories": {
     "test": "tests"
   },

@@ -1,49 +1,44 @@
-import { IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow';
-import { BASE_DOMAIN } from '../shared/constants';
+import {
+	IAuthenticateGeneric, ICredentialTestRequest,
+	ICredentialType,
+	INodeProperties,
+} from 'n8n-workflow';
 
 export class BizwachatApi implements ICredentialType {
 	name = 'bizwachatApi';
 	displayName = 'Bizwachat API';
-	// Uses the link to this tutorial as an example
-	// Replace with your own docs links when building your own nodes
-	documentationUrl =
-		'https://docs.bizwachat.app/n8n-overview';
+	documentationUrl = 'https://www.chatwoot.com/docs/contributing-guide/chatwoot-apis';
 	properties: INodeProperties[] = [
 		{
-			displayName: 'API Key',
-			name: 'apiKey',
+			displayName: 'Access Token',
+			name: 'apiToken',
 			type: 'string',
-			typeOptions: { password: true },
+			placeholder: "The channel or global access token",
 			default: '',
+			required: true,
+			typeOptions: {
+				password: true
+			},
 		},
 	];
+
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
 			headers: {
-				Authorization: '={{$credentials.apiKey}}',
+				'Authorization': '={{"Bearer " + $credentials.apiToken}}',
 			},
 		},
 	};
 
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: `${BASE_DOMAIN}/api`,
-			url: '/check-api-key',
+			baseURL: 'https://api.bizwachat.com/api',
+			url: '/channel/health',
 			method: 'GET',
 			headers: {
-				'Content-Type': 'application/json',
-			},
+				'Authorization': '={{"Bearer " + $credentials.apiToken}}',
+			}
 		},
-		rules: [
-			{
-				type: 'responseSuccessBody',
-				properties: {
-					key: 'success',
-					value: false,
-					message: 'Invalid API key',
-				},
-			},
-		],
 	};
 }

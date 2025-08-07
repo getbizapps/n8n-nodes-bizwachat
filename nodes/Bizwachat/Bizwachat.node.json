@@ -1,19 +1,20 @@
 {
-	"node": "n8n-nodes-base.Bizwachat",
+	"node": "n8n-nodes-base.bizwachat",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": [
-		"Miscellaneous"
+		"Development",
+		"Developer Tools"
 	],
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://docs.bizwachat.app/n8n-overview"
+				"url": "https://bizwachat.com/reference/getting-started"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.bizwachat.app/n8n-overview"
+				"url": "https://bizwachat.com/reference/getting-started"
 			}
 		]
 	}
