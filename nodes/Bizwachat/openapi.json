@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "/api",
+            "url": "https://bizwachat.com",
             "description": "API Server"
         }
     ],
