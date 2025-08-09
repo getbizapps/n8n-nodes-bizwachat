@@ -131,7 +131,7 @@
                     "Contacts"
                 ],
                 "summary": "Update a contact",
-                "operationId": "c87aad98e045a219c03f2f63ffc26f96",
+                "operationId": "updateAContact",
                 "parameters": [
                     {
                         "name": "uuid",
@@ -180,7 +180,7 @@
                 ],
                 "summary": "Delete a contact",
                 "description": "Delete a contact.",
-                "operationId": "8bdc893fc9ee2cdbe3ecaf7158b068e7",
+                "operationId": "deleteAContact",
                 "parameters": [
                     {
                         "name": "uuid",
@@ -213,7 +213,7 @@
                 ],
                 "summary": "List all contacts",
                 "description": "List all contacts.",
-                "operationId": "24b024badecf4adb673b5a5ecb6c4393",
+                "operationId": "listAllContacts",
                 "parameters": [
                     {
                         "name": "page",
@@ -252,7 +252,7 @@
                 ],
                 "summary": "Create a new contact",
                 "description": "Create or update a contact.",
-                "operationId": "3501146101a09b94665610d1772e8193",
+                "operationId": "createANewContact",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -297,7 +297,7 @@
                 ],
                 "summary": "List all contact groups",
                 "description": "List all contact groups.",
-                "operationId": "bd9523cb1415199627fe7f730257ec38",
+                "operationId": "listAllContactGroups",
                 "parameters": [
                     {
                         "name": "page",
@@ -371,7 +371,7 @@
                 ],
                 "summary": "Create a new contact group",
                 "description": "Create or update a contact group.",
-                "operationId": "83402693aecca9ee48e721f0ce086ad0",
+                "operationId": "createANewContactGroup",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -429,7 +429,7 @@
                     "Contact Groups"
                 ],
                 "summary": "Update a contact group",
-                "operationId": "cfe2c210af8d4cc68270b734ccd663c8",
+                "operationId": "updateAContactGroup",
                 "parameters": [
                     {
                         "name": "uuid",
@@ -493,7 +493,7 @@
                 ],
                 "summary": "Delete a contact group",
                 "description": "Delete a contact group.",
-                "operationId": "1f7b8517c7681f4e21b55056e7daf6ac",
+                "operationId": "deleteAContactGroup",
                 "parameters": [
                     {
                         "name": "uuid",
@@ -543,7 +543,7 @@
                 ],
                 "summary": "Create a new canned reply",
                 "description": "Create a new canned reply.",
-                "operationId": "215d3ddaee2683f4df13cf502570cd12",
+                "operationId": "createANewCannedReply",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -606,7 +606,7 @@
                     "Canned Replies"
                 ],
                 "summary": "Update a canned reply",
-                "operationId": "fb98b4ef17b9c6a2a367d3b550c9228f",
+                "operationId": "updateACannedReply",
                 "parameters": [
                     {
                         "name": "uuid",
@@ -674,7 +674,7 @@
                 ],
                 "summary": "Delete a canned reply",
                 "description": "Delete a canned reply.",
-                "operationId": "17ddfe5ffcb9e175dd69aa91c8192840",
+                "operationId": "deleteACannedReply",
                 "parameters": [
                     {
                         "name": "uuid",
@@ -723,7 +723,7 @@
                     "Messages"
                 ],
                 "summary": "Send a WhatsApp message",
-                "operationId": "0a12e3b03e63242f200677f954cba21b",
+                "operationId": "sendAWhatsappMessage",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -766,7 +766,7 @@
                                                         },
                                                         "title": {
                                                             "type": "string",
-                                                            "example": "First Button’s Title"
+                                                            "example": "First Button\u2019s Title"
                                                         }
                                                     },
                                                     "type": "object"
@@ -788,14 +788,14 @@
                                         "type": "reply",
                                         "reply": {
                                             "id": "unique-postback-id",
-                                            "title": "First Button’s Title"
+                                            "title": "First Button\u2019s Title"
                                         }
                                     },
                                     {
                                         "type": "reply",
                                         "reply": {
                                             "id": "unique-postback-id",
-                                            "title": "Second Button’s Title"
+                                            "title": "Second Button\u2019s Title"
                                         }
                                     }
                                 ]
@@ -841,7 +841,7 @@
                 ],
                 "summary": "Send a template message",
                 "description": "Send a template message.",
-                "operationId": "8e073baa37a9502441f0c02ad3127e0b",
+                "operationId": "sendATemplateMessage",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -886,7 +886,7 @@
                 ],
                 "summary": "Send a media message",
                 "description": "Send a media message.",
-                "operationId": "2af8f11674027c3f8950789d7c902d8d",
+                "operationId": "sendAMediaMessage",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -943,7 +943,7 @@
                 ],
                 "summary": "List all templates",
                 "description": "List all templates.",
-                "operationId": "a98d444f07561365acb75f78379ee20e",
+                "operationId": "listAllTemplates",
                 "parameters": [
                     {
                         "name": "page",
@@ -984,7 +984,7 @@
                 ],
                 "summary": "Get conversations for a contact",
                 "description": "Get conversations for a contact or all contacts.",
-                "operationId": "de40bfa94ecbe46867ff557705352f13",
+                "operationId": "getConversationsForAContact",
                 "parameters": [
                     {
                         "name": "uuid",
@@ -1017,7 +1017,7 @@
                 ],
                 "summary": "Upload media file",
                 "description": "Upload media file.",
-                "operationId": "b160a558de40db91431207bc008a71c1",
+                "operationId": "uploadMediaFile",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1062,7 +1062,7 @@
                 ],
                 "summary": "List all notes for a contact",
                 "description": "List all notes for a contact by contact UUID.",
-                "operationId": "2407c695af28e9a112ca7a98c331c411",
+                "operationId": "listAllNotesForAContact",
                 "parameters": [
                     {
                         "name": "uuid",
@@ -1095,7 +1095,7 @@
                 ],
                 "summary": "Store a note for a contact",
                 "description": "Store a note for a contact.",
-                "operationId": "57b441a28336cd20fb881326bcf6b4f7",
+                "operationId": "storeANoteForAContact",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1143,7 +1143,7 @@
                 ],
                 "summary": "Update the status of a ticket",
                 "description": "Update the status of a ticket.",
-                "operationId": "79d0ee71e682243139b7b97ee12c33fb",
+                "operationId": "updateTheStatusOfATicket",
                 "parameters": [
                     {
                         "name": "uuid",
@@ -1194,7 +1194,7 @@
                 ],
                 "summary": "Assign a ticket to a team member",
                 "description": "Assign a ticket to a team member.",
-                "operationId": "9d4b57b2c021cdd9b1c78ab1ac8ab43c",
+                "operationId": "assignATicketToATeamMember",
                 "parameters": [
                     {
                         "name": "uuid",
@@ -1245,7 +1245,7 @@
                 ],
                 "summary": "List all team members",
                 "description": "List all team members for an organization.",
-                "operationId": "7ccbcc29610b15c7bd3e7e559a110cc3",
+                "operationId": "listAllTeamMembers",
                 "parameters": [
                     {
                         "name": "organization",
@@ -1321,7 +1321,7 @@
                 ],
                 "summary": "Search contacts",
                 "description": "Search contacts by first_name, last_name, or phone.",
-                "operationId": "3aeb627d3000ceef418d6a3fa305d717",
+                "operationId": "searchContacts",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1362,7 +1362,7 @@
                 ],
                 "summary": "Get all contacts with last chats and their chatsCount",
                 "description": "Get all contacts with last chats and their chatsCount.",
-                "operationId": "dd68e8724ce4dbff6e40ad2586150887",
+                "operationId": "getAllContactsWithLastChatsAndTheirChatscount",
                 "requestBody": {
                     "required": false,
                     "content": {
