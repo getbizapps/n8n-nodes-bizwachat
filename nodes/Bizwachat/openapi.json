@@ -3,7 +3,15 @@
   "info": {
     "title": "Bizwachat-v1",
     "version": "1.0.0",
-    "description": ""
+    "description": "Bizwachat API documentation for managing contacts, messaging, templates, tickets and related resources.",
+    "termsOfService": "https://bizwachat.com/terms",
+    "contact": {
+      "email": "support@bizwachat.com"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/licenses/MIT"
+    }
   },
   "servers": [
     {
@@ -23,11 +31,19 @@
       }
     }
   },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
   "paths": {
     "/api/contacts": {
       "parameters": [],
       "get": {
         "summary": "Get Contacts",
+        "description": "Retrieve a list of contacts.",
+        "tags": ["Contacts"],
+        "operationId": "list-contacts",
         "parameters": [
           {
             "name": "Accept",
@@ -132,56 +148,72 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "type": "integer"
+            "type": "integer",
+            "description": "Contact numeric identifier"
                           },
                           "uuid": {
-                            "type": "string"
+            "type": "string",
+            "description": "Contact UUID"
                           },
                           "organization_id": {
-                            "type": "integer"
+            "type": "integer",
+            "description": "Owning organization identifier"
                           },
                           "first_name": {
-                            "type": "string"
+            "type": "string",
+            "description": "First name"
                           },
                           "last_name": {
-                            "type": "string"
+            "type": "string",
+            "description": "Last name"
                           },
                           "phone": {
-                            "type": "string",
-                            "format": "utc-millisec"
+            "type": "string",
+           
+            "description": "Phone number (international format)"
                           },
                           "email": {
-                            "type": "string",
-                            "format": "email"
+            "type": "string",
+            "format": "email",
+            "description": "Email address"
                           },
                           "avatar": {
-                            "nullable": true
+            "nullable": true,
+            "description": "Avatar image URL if available"
                           },
                           "address": {
-                            "type": "string",
-                            "format": "style"
+            "type": "string",
+            "format": "style",
+            "description": "Contact address"
                           },
                           "contact_group_id": {
-                            "type": "integer"
+            "type": "integer",
+            "description": "Associated contact group id"
                           },
                           "is_favorite": {
-                            "type": "integer"
+            "type": "integer",
+            "description": "Flag indicating favorite (1/0)"
                           },
                           "created_by": {
-                            "type": "integer"
+            "type": "integer",
+            "description": "User id who created"
                           },
                           "created_at": {
-                            "type": "string"
+            "type": "string",
+            "description": "Creation timestamp"
                           },
                           "updated_at": {
-                            "type": "string",
-                            "format": "style"
+            "type": "string",
+            "format": "style",
+            "description": "Last update timestamp"
                           },
                           "deleted_at": {
-                            "nullable": true
+            "nullable": true,
+            "description": "Soft delete timestamp if deleted"
                           },
                           "full_name": {
-                            "type": "string"
+            "type": "string",
+            "description": "Concatenated full name"
                           }
                         }
                       }
@@ -190,19 +222,23 @@
                       "type": "object",
                       "properties": {
                         "first": {
-                          "type": "string",
-                          "format": "uri"
+          "type": "string",
+          "format": "uri",
+          "description": "First page URL"
                         },
                         "last": {
-                          "type": "string",
-                          "format": "uri"
+          "type": "string",
+          "format": "uri",
+          "description": "Last page URL"
                         },
                         "prev": {
-                          "nullable": true
+          "nullable": true,
+          "description": "Previous page URL if any"
                         },
                         "next": {
-                          "type": "string",
-                          "format": "uri"
+          "type": "string",
+          "format": "uri",
+          "description": "Next page URL if any"
                         }
                       }
                     },
@@ -210,13 +246,16 @@
                       "type": "object",
                       "properties": {
                         "current_page": {
-                          "type": "integer"
+          "type": "integer",
+          "description": "Current page number"
                         },
                         "from": {
-                          "type": "integer"
+          "type": "integer",
+          "description": "First item index on this page"
                         },
                         "last_page": {
-                          "type": "integer"
+          "type": "integer",
+          "description": "Last available page number"
                         },
                         "links": {
                           "type": "array",
@@ -224,29 +263,36 @@
                             "type": "object",
                             "properties": {
                               "url": {
-                                "nullable": true
+            "nullable": true,
+            "description": "Target URL for the pagination element"
                               },
                               "label": {
-                                "type": "string"
+            "type": "string",
+            "description": "Display label for the pagination element"
                               },
                               "active": {
-                                "type": "boolean"
+            "type": "boolean",
+            "description": "Indicates whether this pagination element is the current page"
                               }
                             }
                           }
                         },
                         "path": {
-                          "type": "string",
-                          "format": "uri"
+          "type": "string",
+          "format": "uri",
+          "description": "Base path for pagination links"
                         },
                         "per_page": {
-                          "type": "integer"
+          "type": "integer",
+          "description": "Items per page"
                         },
                         "to": {
-                          "type": "integer"
+          "type": "integer",
+          "description": "Last item index on this page"
                         },
                         "total": {
-                          "type": "integer"
+          "type": "integer",
+          "description": "Total number of items"
                         }
                       }
                     }
@@ -259,6 +305,9 @@
       },
       "post": {
         "summary": "Create Contact",
+  "description": "Create a new contact.",
+  "tags": ["Contacts"],
+  "operationId": "create-contact",
         "parameters": [
           {
             "name": "Content-Type",
@@ -398,7 +447,7 @@
                   },
                   "phone": {
                     "type": "string",
-          "format": "utc-millisec",
+         
           "description": "Phone number of the contact in international format"
                   }
                 }
@@ -423,6 +472,9 @@
       ],
       "put": {
         "summary": "Update Contact with UUID",
+  "description": "Update an existing contact by UUID.",
+  "tags": ["Contacts"],
+  "operationId": "update-contact",
         "parameters": [
           {
             "name": "Content-Type",
@@ -562,7 +614,7 @@
                   },
                   "phone": {
                     "type": "string",
-          "format": "utc-millisec",
+         
           "description": "Phone number of the contact in international format"
                   }
                 }
@@ -578,6 +630,9 @@
       },
       "delete": {
         "summary": "Delete Contact with UUID",
+  "description": "Delete a contact by UUID.",
+  "tags": ["Contacts"],
+  "operationId": "delete-contact",
         "parameters": [
           {
             "name": "Accept",
@@ -694,6 +749,9 @@
       },
       "get": {
         "summary": "Search Contact by UUID",
+  "description": "Retrieve a single contact by UUID.",
+  "tags": ["Contacts"],
+  "operationId": "get-contact",
         "parameters": [],
         "security": [
           {
@@ -702,7 +760,40 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Contact retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "statusCode": { "type": "integer", "description": "HTTP status code" },
+                    "message": { "type": "string", "description": "Result message" },
+                    "data": {
+                      "type": "object",
+                      "description": "Contact resource",
+                      "properties": {
+                        "id": { "type": "integer", "description": "Contact numeric identifier" },
+                        "uuid": { "type": "string", "description": "Contact UUID" },
+                        "organization_id": { "type": "integer", "description": "Owning organization id" },
+                        "first_name": { "type": "string", "nullable": true, "description": "First name" },
+                        "last_name": { "type": "string", "nullable": true, "description": "Last name" },
+                        "phone": { "type": "string", "description": "Phone number" },
+                        "email": { "type": "string", "nullable": true, "description": "Email address" },
+                        "avatar": { "nullable": true, "description": "Avatar URL" },
+                        "address": { "nullable": true, "description": "Address text" },
+                        "contact_group_id": { "nullable": true, "description": "Group association" },
+                        "is_favorite": { "type": "integer", "description": "Favorite flag (1/0)" },
+                        "created_by": { "type": "integer", "description": "User who created" },
+                        "created_at": { "type": "string", "nullable": true, "description": "Creation timestamp" },
+                        "updated_at": { "type": "string", "nullable": true, "description": "Last update timestamp" },
+                        "deleted_at": { "nullable": true, "description": "Soft delete timestamp" },
+                        "full_name": { "type": "string", "description": "Full name" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -714,6 +805,9 @@
       "parameters": [],
       "get": {
         "summary": "Get Contact Groups",
+  "description": "Retrieve all contact groups.",
+  "tags": ["Contact Groups"],
+  "operationId": "list-contact-groups",
         "parameters": [
           {
             "name": "Accept",
@@ -918,6 +1012,9 @@
       },
       "post": {
         "summary": "Create Contact Group",
+  "description": "Create a new contact group.",
+  "tags": ["Contact Groups"],
+  "operationId": "create-contact-group",
         "parameters": [
           {
             "name": "Content-Type",
@@ -1073,6 +1170,9 @@
       ],
       "put": {
         "summary": "Edit Contact Group with UUID",
+  "description": "Update a contact group by UUID.",
+  "tags": ["Contact Groups"],
+  "operationId": "update-contact-group",
         "parameters": [
           {
             "name": "Content-Type",
@@ -1214,6 +1314,9 @@
       },
       "delete": {
         "summary": "Delete Contact Group with UUID",
+  "description": "Delete a contact group by UUID.",
+  "tags": ["Contact Groups"],
+  "operationId": "delete-contact-group",
         "parameters": [
           {
             "name": "Accept",
@@ -1333,6 +1436,9 @@
       "parameters": [],
       "get": {
         "summary": "Automated Replies",
+  "description": "List canned / automated replies.",
+  "tags": ["Canned Replies"],
+  "operationId": "list-canned-replies",
         "parameters": [
           {
             "name": "Accept",
@@ -1549,6 +1655,9 @@
       },
       "post": {
         "summary": "Send Automated Reply",
+  "description": "Create a new canned reply.",
+  "tags": ["Canned Replies"],
+  "operationId": "create-canned-reply",
         "parameters": [
           {
             "name": "Content-Type",
@@ -1720,6 +1829,9 @@
       ],
       "put": {
         "summary": "Update Automated Reply with UUID",
+  "description": "Update a canned reply by UUID.",
+  "tags": ["Canned Replies"],
+  "operationId": "update-canned-reply",
         "parameters": [
           {
             "name": "Content-Type",
@@ -1871,6 +1983,9 @@
       },
       "delete": {
         "summary": "Delete Automated Reply with UUID",
+  "description": "Delete a canned reply by UUID.",
+  "tags": ["Canned Replies"],
+  "operationId": "delete-canned-reply",
         "parameters": [
           {
             "name": "Accept",
@@ -1990,6 +2105,9 @@
       "parameters": [],
       "post": {
         "summary": "Send Message",
+  "description": "Send a text message to a contact.",
+  "tags": ["Messaging"],
+  "operationId": "send-message",
         "parameters": [
           {
             "name": "Content-Type",
@@ -2250,33 +2368,43 @@
           }
         },
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": ["phone", "message"],
                 "properties": {
                   "phone": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Recipient phone number in international format"
                   },
                   "message": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Text content of the message"
                   },
                   "header": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional header text (used for interactive/message templates)"
                   },
                   "footer": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional footer text"
                   },
                   "buttons": {
                     "type": "array",
+                    "description": "Optional interactive buttons to include with the message",
                     "items": {
                       "type": "object",
+                      "required": ["id", "title"],
                       "properties": {
                         "id": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "Developer-defined unique identifier for the button"
                         },
                         "title": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "Button display text"
                         }
                       }
                     }
@@ -2292,6 +2420,9 @@
       "parameters": [],
       "post": {
         "summary": "Send Media Message",
+  "description": "Send a media (image, video, document, audio, sticker) message to a contact.",
+  "tags": ["Messaging"],
+  "operationId": "send-media-message",
         "parameters": [
           {
             "name": "Content-Type",
@@ -2498,6 +2629,9 @@
       "parameters": [],
       "post": {
         "summary": "Send Template Message",
+  "description": "Send a pre-approved template message.",
+  "tags": ["Messaging"],
+  "operationId": "send-template-message",
         "parameters": [
           {
             "name": "Content-Type",
@@ -2701,12 +2835,12 @@
                                 "properties": {
                                   "input": {
                                     "type": "string",
-                                    "format": "utc-millisec",
+                                   
                                     "description": "Original phone number input provided"
                                   },
                                   "wa_id": {
                                     "type": "string",
-                                    "format": "utc-millisec",
+                                   
                                     "description": "WhatsApp ID associated with the contact"
                                   }
                                 }
@@ -2792,6 +2926,9 @@
       "parameters": [],
       "post": {
         "summary": "Upload media file",
+  "description": "Upload a media file for later sending.",
+  "tags": ["Media"],
+  "operationId": "upload-media",
         "parameters": [],
         "security": [
           {
@@ -2812,6 +2949,9 @@
       "parameters": [],
       "get": {
         "summary": "Get all Message Templates",
+  "description": "Retrieve all available message templates.",
+  "tags": ["Templates"],
+  "operationId": "list-templates",
         "parameters": [],
         "security": [
           {
@@ -2832,6 +2972,9 @@
       "parameters": [],
       "post": {
         "summary": "Add Contact Notes",
+  "description": "Add a note to a contact.",
+  "tags": ["Notes"],
+  "operationId": "add-contact-note",
         "parameters": [],
         "security": [
           {
@@ -2896,6 +3039,9 @@
       ],
       "get": {
         "summary": "Get Contact Notes",
+  "description": "Retrieve notes for a contact.",
+  "tags": ["Notes"],
+  "operationId": "list-contact-notes",
         "parameters": [],
         "security": [
           {
@@ -2927,6 +3073,9 @@
       ],
       "get": {
         "summary": "Get conversations for a Contact",
+  "description": "Retrieve conversation history for a contact.",
+  "tags": ["Conversations"],
+  "operationId": "get-contact-conversations",
         "parameters": [],
         "security": [
           {
@@ -2947,6 +3096,9 @@
       "parameters": [],
       "post": {
         "summary": "Login",
+  "description": "Authenticate and obtain an access token.",
+  "tags": ["Auth"],
+  "operationId": "login",
         "parameters": [],
         "security": [
           {
@@ -3001,6 +3153,9 @@
       "parameters": [],
       "get": {
         "summary": "Check API Key",
+  "description": "Verify that the provided API key (token) is valid.",
+  "tags": ["Auth"],
+  "operationId": "check-api-key",
         "parameters": [],
         "security": [
           {
@@ -3032,6 +3187,9 @@
       ],
       "post": {
         "summary": "Ticket Assign",
+  "description": "Assign a ticket to a user.",
+  "tags": ["Tickets"],
+  "operationId": "assign-ticket",
         "parameters": [
           {
             "name": "user_id",
@@ -3091,6 +3249,9 @@
       "parameters": [],
       "post": {
         "summary": "Get Ticket Count by Status",
+  "description": "Retrieve ticket counts grouped by status.",
+  "tags": ["Tickets"],
+  "operationId": "ticket-status-counts",
         "parameters": [],
         "security": [
           {
@@ -3143,6 +3304,9 @@
       "parameters": [],
       "get": {
         "summary": "Get Users",
+  "description": "Retrieve a list of team users.",
+  "tags": ["Team"],
+  "operationId": "list-users",
         "security": [
           {
             "bearerAuth": []

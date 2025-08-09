@@ -1,0 +1,1267 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "CrunchzApp - WhatsApi API",
+		"description": "This is the API documentation for CrunchzApp channel.",
+		"termsOfService": "https://www.chatwoot.com/terms-of-service/",
+		"contact": {
+			"email": "rafi@crunchz.app"
+		},
+		"license": {
+			"name": "MIT License",
+			"url": "https://opensource.org/licenses/MIT"
+		},
+		"version": "1.0.0"
+	},
+	"servers": [
+		{
+			"url": "https://api.crunchz.app/api"
+		}
+	],
+	"security": [
+		{
+			"apiToken": []
+		}
+	],
+	"paths": {
+		"/channel/health": {
+			"get": {
+				"tags": [
+					"Channel"
+				],
+				"summary": "Channel Health",
+				"description": "Checks the health of the channel.",
+				"operationId": "channel-health",
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/channel/check-phone-number?phone={phone}": {
+			"get": {
+				"tags": [
+					"Channel"
+				],
+				"summary": "Check Phone Number",
+				"description": "Check and verify if a phone number is registered on WhatsApp.",
+				"operationId": "check-phone-number",
+				"parameters": [
+					{
+						"name": "phone",
+						"in": "path",
+						"description": "The phone number with country code",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/chat?limit={limit}&offset={offset}": {
+			"get": {
+				"tags": [
+					"Chat"
+				],
+				"summary": "All Chat",
+				"description": "Get all chat in the channel.",
+				"operationId": "all-chat",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "path",
+						"description": "Limit to display",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						}
+					},
+					{
+						"name": "offset",
+						"in": "path",
+						"description": "Offset to display",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/chat/details?contact_id={contactId}": {
+			"get": {
+				"tags": [
+					"Chat"
+				],
+				"summary": "Chat Details",
+				"description": "Get chat details.",
+				"operationId": "chat-details",
+				"parameters": [
+					{
+						"name": "contactId",
+						"in": "path",
+						"description": "Contact ID ( xxx@c.us )",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/chat/archive": {
+			"post": {
+				"tags": [
+					"Chat"
+				],
+				"summary": "Archive Chat",
+				"description": "Archiving a chat.",
+				"operationId": "archive-chat",
+				"requestBody": {
+					"content": {
+						"application/json; charset=utf-8": {
+							"schema": {
+								"required": [
+									"contact_id"
+								],
+								"type": "object",
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID (xxx@c.us)"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/chat/un-archive": {
+			"post": {
+				"tags": [
+					"Chat"
+				],
+				"summary": "Un-Archive Chat",
+				"description": "Un-Archiving a chat.",
+				"operationId": "unarchive-chat",
+				"requestBody": {
+					"content": {
+						"application/json; charset=utf-8": {
+							"schema": {
+								"required": [
+									"contact_id"
+								],
+								"type": "object",
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID (xxx@c.us)"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/groups": {
+			"get": {
+				"tags": [
+					"Group"
+				],
+				"summary": "All Group",
+				"description": "Get all group in the channel.",
+				"operationId": "all-group",
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/text": {
+			"post": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Send Text Message",
+				"description": "Send a text message to a contact.",
+				"operationId": "send-text",
+				"requestBody": {
+					"content": {
+						"application/json; charset=utf-8": {
+							"schema": {
+								"required": [
+									"contact_id",
+									"message"
+								],
+								"type": "object",
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID (xxx@c.us)"
+									},
+									"message": {
+										"type": "string",
+										"description": "The message here"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/image": {
+			"post": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Send Image Message",
+				"description": "Send an image message to a contact.",
+				"operationId": "send-image",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"contact_id",
+									"file"
+								],
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID (xxx@c.us)"
+									},
+									"caption": {
+										"type": "string",
+										"description": "Optional caption for the image"
+									},
+									"file": {
+										"type": "object",
+										"required": [
+											"mimeType",
+											"filename",
+											"url"
+										],
+										"properties": {
+											"mimeType": {
+												"type": "string",
+												"example": "image/png"
+											},
+											"filename": {
+												"type": "string",
+												"example": "image.png"
+											},
+											"url": {
+												"type": "string",
+												"format": "uri",
+												"example": "https://example.com/image.png"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/location": {
+			"post": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Send Location Message",
+				"description": "Send a location message to a contact.",
+				"operationId": "send-location",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"contact_id",
+									"latitude",
+									"longitude",
+									"title"
+								],
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID (xxx@c.us)"
+									},
+									"latitude": {
+										"type": "string",
+										"description": "Latitude of the location",
+										"example": "38.8937255"
+									},
+									"longitude": {
+										"type": "string",
+										"description": "Longitude of the location",
+										"example": "-77.0969763"
+									},
+									"title": {
+										"type": "string",
+										"description": "Title or name of the location",
+										"example": "Our office"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/voice": {
+			"post": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Send Voice Message",
+				"description": "Send a voice message to a contact.",
+				"operationId": "send-voice",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"contact_id",
+									"audioUrl"
+								],
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID (xxx@c.us)"
+									},
+									"audioUrl": {
+										"type": "string",
+										"description": "URL to the voice audio file (.opus, etc.)",
+										"example": "https://github.com/CrunchzApp/asset-example/raw/main/examples/julie-voice.opus"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/video": {
+			"post": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Send Video Message",
+				"description": "Send a video message to a contact.",
+				"operationId": "send-video",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"contact_id",
+									"videoUrl"
+								],
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID (xxx@c.us)"
+									},
+									"videoUrl": {
+										"type": "string",
+										"description": "URL to the video file (.mp4, etc.)",
+										"example": "https://github.com/CrunchzApp/asset-example/raw/main/examples/video.mp4"
+									},
+									"caption": {
+										"type": "string",
+										"description": "Optional caption for the video"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/reaction": {
+			"put": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Send Message Reaction",
+				"description": "React to a previously sent or received message.",
+				"operationId": "send-reaction",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"message_id",
+									"reaction"
+								],
+								"properties": {
+									"message_id": {
+										"type": "string",
+										"description": "The ID of the message to react to"
+									},
+									"reaction": {
+										"type": "string",
+										"description": "The emoji reaction to apply",
+										"example": "😍"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Reaction sent successfully"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/poll": {
+			"post": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Send Poll Message",
+				"description": "Send a poll to a contact.",
+				"operationId": "send-poll",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"contact_id",
+									"title",
+									"options",
+									"is_multiple_answer"
+								],
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The contact's WhatsApp ID"
+									},
+									"title": {
+										"type": "string",
+										"description": "The question/title of the poll"
+									},
+									"options": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": "List of poll options"
+									},
+									"is_multiple_answer": {
+										"type": "boolean",
+										"description": "Whether multiple answers are allowed"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Poll sent successfully"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/star": {
+			"put": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Star a Message",
+				"description": "Star or unstar a previously sent or received message.",
+				"operationId": "star-message",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"message_id",
+									"starred"
+								],
+								"properties": {
+									"message_id": {
+										"type": "string",
+										"description": "The ID of the message to star or unstar"
+									},
+									"starred": {
+										"type": "boolean",
+										"description": "Whether to star or unstar the message",
+										"example": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Message starred successfully"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/delete": {
+			"delete": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Delete a Message",
+				"description": "Delete a previously sent or received message.",
+				"operationId": "delete-message",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"message_id"
+								],
+								"properties": {
+									"message_id": {
+										"type": "string",
+										"description": "The ID of the message to delete"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Message deleted successfully"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/seen": {
+			"post": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Mark Message as Seen",
+				"description": "Marks a previously sent or received message as seen.",
+				"operationId": "mark-message-seen",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"message_id"
+								],
+								"properties": {
+									"message_id": {
+										"type": "string",
+										"description": "The ID of the message to mark as seen"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Message marked as seen"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/typing": {
+			"post": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Send Typing Indicator",
+				"description": "Send a typing indicator to a contact.",
+				"operationId": "send-typing-indicator",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"contact_id"
+								],
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID to show typing status (xxx@c.us)"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Typing indicator sent"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/send-message/stop-typing": {
+			"post": {
+				"tags": [
+					"Message"
+				],
+				"summary": "Stop Typing Indicator",
+				"description": "Stop the typing indicator for a contact.",
+				"operationId": "stop-typing-indicator",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"contact_id"
+								],
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID to stop typing status (xxx@c.us)"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Typing indicator stopped"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/contact": {
+			"get": {
+				"tags": [
+					"Contact"
+				],
+				"summary": "Get Contact Information",
+				"description": "Retrieve information about a specific contact.",
+				"operationId": "get-contact-info",
+				"responses": {
+					"200": {
+						"description": "Contact details retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"contact_id": {
+											"type": "string",
+											"description": "The Contact ID (e.g., xxx@c.us)"
+										},
+										"name": {
+											"type": "string",
+											"description": "The contact's name"
+										},
+										"status": {
+											"type": "string",
+											"description": "The contact's status"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/contact/info": {
+			"get": {
+				"tags": [
+					"Contact"
+				],
+				"summary": "Get Specific Contact Information",
+				"description": "Retrieve detailed information for a specific contact using the contact ID.",
+				"operationId": "get-contact-info-by-id",
+				"parameters": [
+					{
+						"name": "contact_id",
+						"in": "query",
+						"description": "The Contact ID to retrieve details for (e.g., 6281357541790@c.us)",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contact information retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"contact_id": {
+											"type": "string",
+											"description": "The Contact ID"
+										},
+										"name": {
+											"type": "string",
+											"description": "The contact's name"
+										},
+										"status": {
+											"type": "string",
+											"description": "The contact's current status"
+										},
+										"profile_picture": {
+											"type": "string",
+											"description": "The URL to the contact's profile picture"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request (e.g., missing or invalid contact_id)"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/contact/picture": {
+			"get": {
+				"tags": [
+					"Contact"
+				],
+				"summary": "Get Contact's Profile Picture",
+				"description": "Retrieve the profile picture of a specific contact using the contact ID.",
+				"operationId": "get-contact-picture-by-id",
+				"parameters": [
+					{
+						"name": "contact_id",
+						"in": "query",
+						"description": "The Contact ID to retrieve the profile picture for (e.g., 6281357541790@c.us)",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Contact's profile picture retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"contact_id": {
+											"type": "string",
+											"description": "The Contact ID"
+										},
+										"profile_picture_url": {
+											"type": "string",
+											"description": "The URL of the contact's profile picture"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request (e.g., missing or invalid contact_id)"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/otp/code/request": {
+			"post": {
+				"tags": [
+					"OTP Code"
+				],
+				"summary": "Request OTP Code",
+				"description": "Request a One-Time Password (OTP) code for a specific contact with customizable options.",
+				"operationId": "request-otp-code",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"length": {
+										"type": "integer",
+										"description": "The length of the OTP code"
+									},
+									"useLetter": {
+										"type": "boolean",
+										"description": "Whether to use letters in the OTP code"
+									},
+									"useNumber": {
+										"type": "boolean",
+										"description": "Whether to use numbers in the OTP code"
+									},
+									"allCapital": {
+										"type": "boolean",
+										"description": "Whether to make all characters uppercase"
+									},
+									"name": {
+										"type": "string",
+										"description": "The name of the entity requesting the OTP"
+									},
+									"expires": {
+										"type": "integer",
+										"description": "The expiration time of the OTP in seconds"
+									},
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID to request the OTP for (e.g., 6281357541790@c.us)"
+									}
+								},
+								"required": [
+									"contact_id"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OTP code requested successfully"
+					},
+					"400": {
+						"description": "Bad Request (e.g., missing or invalid parameters)"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/otp/code/validate": {
+			"post": {
+				"tags": [
+					"OTP Code"
+				],
+				"summary": "Validate OTP Code",
+				"description": "Validate a One-Time Password (OTP) code for a specific contact.",
+				"operationId": "validate-otp-code",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID for which the OTP code is being validated (e.g., 6281357541790@c.us)"
+									},
+									"code": {
+										"type": "string",
+										"description": "The OTP code to be validated"
+									}
+								},
+								"required": [
+									"contact_id",
+									"code"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OTP code validated successfully"
+					},
+					"400": {
+						"description": "Bad Request (e.g., missing or invalid parameters)"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Contact not found"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		},
+		"/otp/link/request": {
+			"post": {
+				"tags": [
+					"OTP Link"
+				],
+				"summary": "Request OTP Link",
+				"description": "Request an OTP link for a specific contact with customizable messages and callback URLs.",
+				"operationId": "request-otp-link",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"contact_id": {
+										"type": "string",
+										"description": "The Contact ID for which the OTP link is being requested (e.g., 6281357541789@c.us)"
+									},
+									"expires": {
+										"type": "integer",
+										"description": "The expiration time for the OTP link in seconds"
+									},
+									"message": {
+										"type": "object",
+										"properties": {
+											"prompt": {
+												"type": "string",
+												"description": "The message prompt to be displayed"
+											},
+											"success": {
+												"type": "string",
+												"description": "Message to be sent upon successful OTP link request"
+											},
+											"failed": {
+												"type": "string",
+												"description": "Message to be sent if OTP link request fails"
+											},
+											"expired": {
+												"type": "string",
+												"description": "Message to be sent when the OTP link expires"
+											}
+										},
+										"required": [
+											"prompt",
+											"success",
+											"failed",
+											"expired"
+										]
+									},
+									"callback": {
+										"type": "object",
+										"properties": {
+											"success": {
+												"type": "string",
+												"description": "Callback URL for a successful OTP request"
+											},
+											"failed": {
+												"type": "string",
+												"description": "Callback URL for a failed OTP request"
+											}
+										},
+										"required": [
+											"success",
+											"failed"
+										]
+									},
+									"name": {
+										"type": "string",
+										"description": "The name of the company or service requesting the OTP link"
+									}
+								},
+								"required": [
+									"contact_id",
+									"expires",
+									"message",
+									"callback",
+									"name"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OTP link requested successfully"
+					},
+					"400": {
+						"description": "Bad Request (e.g., missing or invalid parameters)"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Contact not found"
+					}
+				},
+				"security": [
+					{
+						"apiToken": []
+					}
+				]
+			}
+		}
+	},
+	"components": {
+		"securitySchemes": {
+			"apiToken": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT",
+				"description": "API token. Use 'Bearer <token>' format."
+			}
+		}
+	},
+	"x-original-swagger-version": "2.0"
+}
