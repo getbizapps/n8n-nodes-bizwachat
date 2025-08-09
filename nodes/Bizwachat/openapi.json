@@ -774,48 +774,27 @@
                                     },
                                     "message": {
                                         "type": "string",
-                                        "example": "Hello!"
-                                    },
-                                    "first_name": {
-                                        "type": "string",
-                                        "example": "John"
-                                    },
-                                    "last_name": {
-                                        "type": "string",
-                                        "example": "Doe"
-                                    },
-                                    "email": {
-                                        "type": "string",
-                                        "example": "john.doe@example.com"
+                                        "example": "Hello John, how are you?"
                                     },
                                     "header": {
                                         "type": "string",
-                                        "example": "Header text"
+                                        "example": "Test header"
                                     },
                                     "footer": {
                                         "type": "string",
-                                        "example": "Footer text"
+                                        "example": "Test footer"
                                     },
                                     "buttons": {
                                         "type": "array",
                                         "items": {
                                             "properties": {
-                                                "type": {
+                                                "id": {
                                                     "type": "string",
-                                                    "example": "reply"
+                                                    "example": "fine_1"
                                                 },
-                                                "reply": {
-                                                    "properties": {
-                                                        "id": {
-                                                            "type": "string",
-                                                            "example": "unique-postback-id"
-                                                        },
-                                                        "title": {
-                                                            "type": "string",
-                                                            "example": "First Button\u2019s Title"
-                                                        }
-                                                    },
-                                                    "type": "object"
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Deal"
                                                 }
                                             },
                                             "type": "object"
