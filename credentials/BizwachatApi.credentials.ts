@@ -7,7 +7,7 @@ import {
 export class BizwachatApi implements ICredentialType {
 	name = 'bizwachatApi';
 	displayName = 'Bizwachat API';
-	documentationUrl = 'https://www.chatwoot.com/docs/contributing-guide/chatwoot-apis';
+	documentationUrl = 'https://bizwachat.com/references/getting-started';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'Access Token',
@@ -33,8 +33,8 @@ export class BizwachatApi implements ICredentialType {
 
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'https://api.bizwachat.com/api',
-			url: '/channel/health',
+			baseURL: 'https://bizwachat.com/api',
+			url: '/check-api-key',
 			method: 'GET',
 			headers: {
 				'Authorization': '={{"Bearer " + $credentials.apiToken}}',
