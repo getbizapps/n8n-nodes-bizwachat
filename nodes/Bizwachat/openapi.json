@@ -1,3327 +1,1437 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Bizwachat-v1",
-    "version": "1.0.0",
-    "description": "Bizwachat API documentation for managing contacts, messaging, templates, tickets and related resources.",
-    "termsOfService": "https://bizwachat.com/terms",
-    "contact": {
-      "email": "support@bizwachat.com"
+    "openapi": "3.0.0",
+    "info": {
+        "title": "BizCRM WhatsApp API",
+        "description": "Comprehensive API for BizCRM WhatsApp integration.",
+        "version": "1.0.0"
     },
-    "license": {
-      "name": "MIT License",
-      "url": "https://opensource.org/licenses/MIT"
-    }
-  },
-  "servers": [
-    {
-      "url": "https://bizwachat.com"
-    },
-    {
-      "url": ""
-    }
-  ],
-  "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT",
-        "description": "Enter your Bearer token in the format: Bearer <token>"
-      }
-    }
-  },
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
-  "paths": {
-    "/api/contacts": {
-      "parameters": [],
-      "get": {
-        "summary": "Get Contacts",
-        "description": "Retrieve a list of contacts.",
-        "tags": ["Contacts"],
-        "operationId": "list-contacts",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:29:14 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "59"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-            "type": "integer",
-            "description": "Contact numeric identifier"
-                          },
-                          "uuid": {
-            "type": "string",
-            "description": "Contact UUID"
-                          },
-                          "organization_id": {
-            "type": "integer",
-            "description": "Owning organization identifier"
-                          },
-                          "first_name": {
-            "type": "string",
-            "description": "First name"
-                          },
-                          "last_name": {
-            "type": "string",
-            "description": "Last name"
-                          },
-                          "phone": {
-            "type": "string",
-           
-            "description": "Phone number (international format)"
-                          },
-                          "email": {
-            "type": "string",
-            "format": "email",
-            "description": "Email address"
-                          },
-                          "avatar": {
-            "nullable": true,
-            "description": "Avatar image URL if available"
-                          },
-                          "address": {
-            "type": "string",
-            "format": "style",
-            "description": "Contact address"
-                          },
-                          "contact_group_id": {
-            "type": "integer",
-            "description": "Associated contact group id"
-                          },
-                          "is_favorite": {
-            "type": "integer",
-            "description": "Flag indicating favorite (1/0)"
-                          },
-                          "created_by": {
-            "type": "integer",
-            "description": "User id who created"
-                          },
-                          "created_at": {
-            "type": "string",
-            "description": "Creation timestamp"
-                          },
-                          "updated_at": {
-            "type": "string",
-            "format": "style",
-            "description": "Last update timestamp"
-                          },
-                          "deleted_at": {
-            "nullable": true,
-            "description": "Soft delete timestamp if deleted"
-                          },
-                          "full_name": {
-            "type": "string",
-            "description": "Concatenated full name"
-                          }
-                        }
-                      }
-                    },
-                    "links": {
-                      "type": "object",
-                      "properties": {
-                        "first": {
-          "type": "string",
-          "format": "uri",
-          "description": "First page URL"
-                        },
-                        "last": {
-          "type": "string",
-          "format": "uri",
-          "description": "Last page URL"
-                        },
-                        "prev": {
-          "nullable": true,
-          "description": "Previous page URL if any"
-                        },
-                        "next": {
-          "type": "string",
-          "format": "uri",
-          "description": "Next page URL if any"
-                        }
-                      }
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "current_page": {
-          "type": "integer",
-          "description": "Current page number"
-                        },
-                        "from": {
-          "type": "integer",
-          "description": "First item index on this page"
-                        },
-                        "last_page": {
-          "type": "integer",
-          "description": "Last available page number"
-                        },
-                        "links": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "url": {
-            "nullable": true,
-            "description": "Target URL for the pagination element"
-                              },
-                              "label": {
-            "type": "string",
-            "description": "Display label for the pagination element"
-                              },
-                              "active": {
-            "type": "boolean",
-            "description": "Indicates whether this pagination element is the current page"
-                              }
-                            }
-                          }
-                        },
-                        "path": {
-          "type": "string",
-          "format": "uri",
-          "description": "Base path for pagination links"
-                        },
-                        "per_page": {
-          "type": "integer",
-          "description": "Items per page"
-                        },
-                        "to": {
-          "type": "integer",
-          "description": "Last item index on this page"
-                        },
-                        "total": {
-          "type": "integer",
-          "description": "Total number of items"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Create Contact",
-  "description": "Create a new contact.",
-  "tags": ["Contacts"],
-  "operationId": "create-contact",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:29:53 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "57"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-        "required": ["first_name", "last_name", "phone"],
-                "type": "object",
-                "properties": {
-                  "first_name": {
-          "type": "string",
-          "description": "First name of the contact"
-                  },
-                  "last_name": {
-          "type": "string",
-          "description": "Last name of the contact"
-                  },
-                  "email": {
-                    "type": "string",
-          "format": "email",
-          "description": "Email address of the contact"
-                  },
-                  "phone": {
-                    "type": "string",
-         
-          "description": "Phone number of the contact in international format"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/contacts/{{uuid}}": {
-      "parameters": [
+    "servers": [
         {
-          "name": "uuid",
-          "in": "path",
-          "required": true,
-          "description": "UUID of the Contact",
-          "example": "string",
-          "schema": {
-            "type": "string"
-          }
+            "url": "/api",
+            "description": "API Server"
         }
-      ],
-      "put": {
-        "summary": "Update Contact with UUID",
-  "description": "Update an existing contact by UUID.",
-  "tags": ["Contacts"],
-  "operationId": "update-contact",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:30:41 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "59"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-        "required": ["first_name", "last_name", "phone"],
-                "type": "object",
-                "properties": {
-                  "first_name": {
-          "type": "string",
-          "description": "First name of the contact"
-                  },
-                  "last_name": {
-          "type": "string",
-          "description": "Last name of the contact"
-                  },
-                  "email": {
-                    "type": "string",
-          "format": "email",
-          "description": "Email address of the contact"
-                  },
-                  "phone": {
-                    "type": "string",
-         
-          "description": "Phone number of the contact in international format"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      },
-      "delete": {
-        "summary": "Delete Contact with UUID",
-  "description": "Delete a contact by UUID.",
-  "tags": ["Contacts"],
-  "operationId": "delete-contact",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:31:12 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "58"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "summary": "Search Contact by UUID",
-  "description": "Retrieve a single contact by UUID.",
-  "tags": ["Contacts"],
-  "operationId": "get-contact",
-        "parameters": [],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Contact retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": { "type": "integer", "description": "HTTP status code" },
-                    "message": { "type": "string", "description": "Result message" },
-                    "data": {
-                      "type": "object",
-                      "description": "Contact resource",
-                      "properties": {
-                        "id": { "type": "integer", "description": "Contact numeric identifier" },
-                        "uuid": { "type": "string", "description": "Contact UUID" },
-                        "organization_id": { "type": "integer", "description": "Owning organization id" },
-                        "first_name": { "type": "string", "nullable": true, "description": "First name" },
-                        "last_name": { "type": "string", "nullable": true, "description": "Last name" },
-                        "phone": { "type": "string", "description": "Phone number" },
-                        "email": { "type": "string", "nullable": true, "description": "Email address" },
-                        "avatar": { "nullable": true, "description": "Avatar URL" },
-                        "address": { "nullable": true, "description": "Address text" },
-                        "contact_group_id": { "nullable": true, "description": "Group association" },
-                        "is_favorite": { "type": "integer", "description": "Favorite flag (1/0)" },
-                        "created_by": { "type": "integer", "description": "User who created" },
-                        "created_at": { "type": "string", "nullable": true, "description": "Creation timestamp" },
-                        "updated_at": { "type": "string", "nullable": true, "description": "Last update timestamp" },
-                        "deleted_at": { "nullable": true, "description": "Soft delete timestamp" },
-                        "full_name": { "type": "string", "description": "Full name" }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/contact-groups": {
-      "parameters": [],
-      "get": {
-        "summary": "Get Contact Groups",
-  "description": "Retrieve all contact groups.",
-  "tags": ["Contact Groups"],
-  "operationId": "list-contact-groups",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:44:10 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "59"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "uuid": {
+    ],
+    "paths": {
+        "/api/contacts/{uuid}": {
+            "get": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Get contact by UUID",
+                "description": "Returns contact details for the given UUID.",
+                "operationId": "getContactByUuid",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Contact UUID",
+                        "required": true,
+                        "schema": {
                             "type": "string"
-                          },
-                          "organization_id": {
-                            "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "created_by": {
-                            "type": "integer"
-                          },
-                          "created_at": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "updated_at": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "deleted_at": {
-                            "nullable": true
-                          }
                         }
-                      }
                     },
-                    "links": {
-                      "type": "object",
-                      "properties": {
-                        "first": {
-                          "type": "string",
-                          "format": "uri"
-                        },
-                        "last": {
-                          "type": "string",
-                          "format": "uri"
-                        },
-                        "prev": {
-                          "nullable": true
-                        },
-                        "next": {
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "current_page": {
-                          "type": "integer"
-                        },
-                        "from": {
-                          "type": "integer"
-                        },
-                        "last_page": {
-                          "type": "integer"
-                        },
-                        "links": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "url": {
-                                "nullable": true
-                              },
-                              "label": {
-                                "type": "string"
-                              },
-                              "active": {
-                                "type": "boolean"
-                              }
-                            }
-                          }
-                        },
-                        "path": {
-                          "type": "string",
-                          "format": "uri"
-                        },
-                        "per_page": {
-                          "type": "integer"
-                        },
-                        "to": {
-                          "type": "integer"
-                        },
-                        "total": {
-                          "type": "integer"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Create Contact Group",
-  "description": "Create a new contact group.",
-  "tags": ["Contact Groups"],
-  "operationId": "create-contact-group",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:44:24 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "58"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-        "required": ["name"],
-                "type": "object",
-                "properties": {
-                  "name": {
-          "type": "string",
-          "description": "Name of the contact group"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/contact-groups/{{uuid}}": {
-      "parameters": [
-        {
-          "name": "uuid",
-          "in": "path",
-          "required": true,
-          "description": "(Required) ",
-          "example": "string",
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "put": {
-        "summary": "Edit Contact Group with UUID",
-  "description": "Update a contact group by UUID.",
-  "tags": ["Contact Groups"],
-  "operationId": "update-contact-group",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "deprecated": false
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "deprecated": false
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:44:38 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "57"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-        "required": ["name"],
-                "type": "object",
-                "properties": {
-                  "name": {
-          "type": "string",
-          "description": "Updated name of the contact group"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Contact Group with UUID",
-  "description": "Delete a contact group by UUID.",
-  "tags": ["Contact Groups"],
-  "operationId": "delete-contact-group",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:45:11 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "59"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/canned-replies": {
-      "parameters": [],
-      "get": {
-        "summary": "Automated Replies",
-  "description": "List canned / automated replies.",
-  "tags": ["Canned Replies"],
-  "operationId": "list-canned-replies",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:39:23 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "59"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
+                    {
+                        "name": "organization",
+                        "in": "query",
+                        "description": "Organization ID",
+                        "required": true,
+                        "schema": {
                             "type": "integer"
-                          },
-                          "uuid": {
-                            "type": "string"
-                          },
-                          "organization_id": {
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "User ID (for ticket assignment)",
+                        "required": false,
+                        "schema": {
                             "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "trigger": {
-                            "type": "string"
-                          },
-                          "match_criteria": {
-                            "type": "string"
-                          },
-                          "metadata": {
-                            "type": "string",
-                            "format": "style"
-                          },
-                          "created_by": {
-                            "type": "integer"
-                          },
-                          "deleted_by": {
-                            "nullable": true
-                          },
-                          "deleted_at": {
-                            "nullable": true
-                          },
-                          "created_at": {
-                            "type": "string"
-                          },
-                          "updated_at": {
-                            "type": "string",
-                            "format": "style"
-                          }
                         }
-                      }
-                    },
-                    "links": {
-                      "type": "object",
-                      "properties": {
-                        "first": {
-                          "type": "string",
-                          "format": "uri"
-                        },
-                        "last": {
-                          "type": "string",
-                          "format": "uri"
-                        },
-                        "prev": {
-                          "nullable": true
-                        },
-                        "next": {
-                          "nullable": true
-                        }
-                      }
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "current_page": {
-                          "type": "integer"
-                        },
-                        "from": {
-                          "type": "integer"
-                        },
-                        "last_page": {
-                          "type": "integer"
-                        },
-                        "links": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "url": {
-                                "nullable": true
-                              },
-                              "label": {
-                                "type": "string"
-                              },
-                              "active": {
-                                "type": "boolean"
-                              }
-                            }
-                          }
-                        },
-                        "path": {
-                          "type": "string",
-                          "format": "uri"
-                        },
-                        "per_page": {
-                          "type": "integer"
-                        },
-                        "to": {
-                          "type": "integer"
-                        },
-                        "total": {
-                          "type": "integer"
-                        }
-                      }
                     }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Send Automated Reply",
-  "description": "Create a new canned reply.",
-  "tags": ["Canned Replies"],
-  "operationId": "create-canned-reply",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:39:36 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "58"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-        "required": ["name", "trigger", "response_type", "response"],
-                "type": "object",
-                "properties": {
-                  "name": {
-          "type": "string",
-          "description": "Name of the automated reply"
-                  },
-                  "trigger": {
-          "type": "string",
-          "description": "Trigger keyword or phrase"
-                  },
-                  "match_criteria": {
-          "type": "string",
-          "description": "Criteria describing how trigger matches (e.g., exact, contains)"
-                  },
-                  "response_type": {
-          "type": "string",
-          "description": "Type of response (text, template, media)"
-                  },
-                  "response": {
-          "type": "string",
-          "description": "Reply content sent when trigger matches"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/canned-replies/{{autoreply-uuid}}": {
-      "parameters": [
-        {
-          "name": "autoreply-uuid",
-          "in": "path",
-          "required": true,
-          "description": "(Required) ",
-          "example": "string",
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "put": {
-        "summary": "Update Automated Reply with UUID",
-  "description": "Update a canned reply by UUID.",
-  "tags": ["Canned Replies"],
-  "operationId": "update-canned-reply",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:39:57 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "57"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "trigger": {
-                    "type": "string"
-                  },
-                  "match_criteria": {
-                    "type": "string"
-                  },
-                  "response_type": {
-                    "type": "string"
-                  },
-                  "response": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Automated Reply with UUID",
-  "description": "Delete a canned reply by UUID.",
-  "tags": ["Canned Replies"],
-  "operationId": "delete-canned-reply",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:40:25 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "59"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/send": {
-      "parameters": [],
-      "post": {
-        "summary": "Send Message",
-  "description": "Send a text message to a contact.",
-  "tags": ["Messaging"],
-  "operationId": "send-message",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "deprecated": false
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "deprecated": false
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.22"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 12 Apr 2024 09:08:49 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "58"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean"
-                        },
-                        "data": {
-                          "type": "object",
-                          "properties": {
-                            "messaging_product": {
-                              "type": "string"
-                            },
-                            "contacts": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "input": {
-                                    "type": "string",
-                                    "format": "utc-millisec"
-                                  },
-                                  "wa_id": {
-                                    "type": "string",
-                                    "format": "utc-millisec"
-                                  }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contact found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "uuid": {
+                                                        "type": "string",
+                                                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                                                    },
+                                                    "first_name": {
+                                                        "type": "string",
+                                                        "example": "John"
+                                                    },
+                                                    "last_name": {
+                                                        "type": "string",
+                                                        "example": "Doe"
+                                                    },
+                                                    "phone": {
+                                                        "type": "string",
+                                                        "example": "+1234567890"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "john.doe@example.com"
+                                                    },
+                                                    "organization_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-08-09T12:00:00Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-08-09T12:00:00Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
                                 }
-                              }
-                            },
-                            "messages": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string"
-                                  }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Contact not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
-                              }
-                            },
-                            "chat": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "integer"
-                                },
-                                "uuid": {
-                                  "type": "string"
-                                },
-                                "organization_id": {
-                                  "type": "integer"
-                                },
-                                "wam_id": {
-                                  "type": "string"
-                                },
-                                "contact_id": {
-                                  "type": "integer"
-                                },
-                                "type": {
-                                  "type": "string"
-                                },
-                                "metadata": {
-                                  "type": "string",
-                                  "format": "style"
-                                },
-                                "media_id": {
-                                  "nullable": true
-                                },
-                                "status": {
-                                  "type": "string"
-                                },
-                                "deleted_by": {
-                                  "nullable": true
-                                },
-                                "deleted_at": {
-                                  "nullable": true
-                                },
-                                "created_at": {
-                                  "type": "string",
-                                  "format": "style"
-                                },
-                                "contact": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "integer"
-                                    },
-                                    "uuid": {
-                                      "type": "string"
-                                    },
-                                    "organization_id": {
-                                      "type": "integer"
-                                    },
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Update a contact",
+                "operationId": "c87aad98e045a219c03f2f63ffc26f96",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
                                     "first_name": {
-                                      "nullable": true
-                                    },
-                                    "last_name": {
-                                      "nullable": true
+                                        "type": "string"
                                     },
                                     "phone": {
-                                      "type": "string",
-                                      "format": "utc-millisec"
-                                    },
-                                    "email": {
-                                      "nullable": true
-                                    },
-                                    "avatar": {
-                                      "nullable": true
-                                    },
-                                    "address": {
-                                      "nullable": true
-                                    },
-                                    "contact_group_id": {
-                                      "nullable": true
-                                    },
-                                    "is_favorite": {
-                                      "type": "integer"
-                                    },
-                                    "created_by": {
-                                      "type": "integer"
-                                    },
-                                    "created_at": {
-                                      "nullable": true
-                                    },
-                                    "updated_at": {
-                                      "nullable": true
-                                    },
-                                    "deleted_at": {
-                                      "nullable": true
-                                    },
-                                    "full_name": {
-                                      "type": "string"
+                                        "type": "string"
                                     }
-                                  }
                                 },
-                                "media": {
-                                  "nullable": true
-                                }
-                              }
+                                "type": "object"
                             }
-                          }
                         }
-                      }
                     }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": ["phone", "message"],
-                "properties": {
-                  "phone": {
-                    "type": "string",
-                    "description": "Recipient phone number in international format"
-                  },
-                  "message": {
-                    "type": "string",
-                    "description": "Text content of the message"
-                  },
-                  "header": {
-                    "type": "string",
-                    "description": "Optional header text (used for interactive/message templates)"
-                  },
-                  "footer": {
-                    "type": "string",
-                    "description": "Optional footer text"
-                  },
-                  "buttons": {
-                    "type": "array",
-                    "description": "Optional interactive buttons to include with the message",
-                    "items": {
-                      "type": "object",
-                      "required": ["id", "title"],
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "description": "Developer-defined unique identifier for the button"
-                        },
-                        "title": {
-                          "type": "string",
-                          "description": "Button display text"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/send/media": {
-      "parameters": [],
-      "post": {
-        "summary": "Send Media Message",
-  "description": "Send a media (image, video, document, audio, sticker) message to a contact.",
-  "tags": ["Messaging"],
-  "operationId": "send-media-message",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "deprecated": false
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "deprecated": false
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": { "type": "string" },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": { "type": "string" },
-                "example": "nginx/1.25.5"
-              },
-              "Transfer-Encoding": {
-                "schema": { "type": "string" },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": { "type": "string" },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
                 },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.28"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Fri, 28 Jun 2024 13:44:34 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "59"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer"
+                "responses": {
+                    "200": {
+                        "description": "Contact updated"
                     },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean"
-                        },
-                        "data": {
-                          "type": "object",
-                          "properties": {
-                            "messaging_product": {
-                              "type": "string"
-                            },
-                            "contacts": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "input": {
-                                    "type": "string",
-                                    "format": "utc-millisec"
-                                  },
-                                  "wa_id": {
-                                    "type": "string",
-                                    "format": "utc-millisec"
-                                  }
-                                }
-                              }
-                            },
-                            "messages": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": { "type": "string" }
-                                }
-                              }
-                            },
-                            "chat": {
-                              "type": "object",
-                              "properties": {
-                                "id": { "type": "integer" },
-                                "uuid": { "type": "string" },
-                                "organization_id": { "type": "integer" },
-                                "wam_id": { "type": "string" },
-                                "contact_id": { "type": "integer" },
-                                "user_id": { "nullable": true },
-                                "type": { "type": "string" },
-                                "metadata": { "type": "string", "format": "style" },
-                                "media_id": { "type": "integer" },
-                                "status": { "type": "string" },
-                                "deleted_by": { "nullable": true },
-                                "deleted_at": { "nullable": true },
-                                "created_at": { "type": "string", "format": "style" }
-                              }
-                            }
-                          }
-                        }
-                      }
+                    "400": {
+                        "description": "Invalid data"
                     }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "required": ["phone", "media_type", "media_url"],
-                "type": "object",
-                "properties": {
-                  "phone": {
-                    "type": "string",
-                    "description": "Recipient phone number in international format"
-                  },
-                  "media_type": {
-                    "type": "string",
-                    "description": "Type of media (image, video, document, audio, sticker)"
-                  },
-                  "media_url": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Public URL where the media can be fetched"
-                  },
-                  "caption": {
-                    "type": "string",
-                    "description": "Optional caption to include with media"
-                  },
-                  "file_name": {
-                    "type": "string",
-                    "description": "Optional file name to display for documents"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/send/template": {
-      "parameters": [],
-      "post": {
-        "summary": "Send Template Message",
-  "description": "Send a pre-approved template message.",
-  "tags": ["Messaging"],
-  "operationId": "send-template-message",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "deprecated": false
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "deprecated": false
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": ["phone", "template"],
-                "properties": {
-                  "phone": {
-                    "type": "string",
-                    "description": "Recipient phone number in international format including country code"
-                  },
-                  "template": {
-                    "type": "object",
-                    "required": ["name", "language"],
-                    "description": "Template payload defining which approved WhatsApp template to use",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "description": "Unique template name as approved in WhatsApp Business Manager"
-                      },
-                      "language": {
-                        "type": "object",
-                        "required": ["code"],
-                        "description": "Language configuration for the template",
-                        "properties": {
-                          "code": {
-                            "type": "string",
-                            "description": "BCP-47 language code e.g. en_US"
-                          }
-                        }
-                      },
-                      "components": {
-                        "type": "array",
-                        "description": "Array of template components (header, body, button) with parameter substitutions",
-                        "items": {
-                          "type": "object",
-                          "required": ["type"],
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "description": "Component type (HEADER, BODY, BUTTON)"
-                            },
-                            "parameters": {
-                              "type": "array",
-                              "description": "Parameter values that will replace placeholders in the component text",
-                              "items": {
-                                "type": "object",
-                                "required": ["type", "text"],
-                                "properties": {
-                                  "type": {
-                                    "type": "string",
-                                    "description": "Parameter type (text, currency, date_time, etc.)"
-                                  },
-                                  "text": {
-                                    "type": "string",
-                                    "description": "Value to substitute for the matching placeholder"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
                     }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "headers": {
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.5"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.1.28"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Mon, 01 Jul 2024 10:27:38 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "60"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "58"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
+                ]
             },
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {
-                      "type": "integer",
-                      "description": "HTTP status code of the response"
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Indicates if the template message request was accepted for processing"
-                        },
-                        "data": {
-                          "type": "object",
-                          "properties": {
-                            "messaging_product": {
-                              "type": "string",
-                              "description": "Messaging product (e.g. whatsapp) through which message was sent"
-                            },
-                            "contacts": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "input": {
-                                    "type": "string",
-                                   
-                                    "description": "Original phone number input provided"
-                                  },
-                                  "wa_id": {
-                                    "type": "string",
-                                   
-                                    "description": "WhatsApp ID associated with the contact"
-                                  }
-                                }
-                              }
-                            },
-                            "messages": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "description": "Unique WhatsApp message identifier"
-                                  },
-                                  "message_status": {
-                                    "type": "string",
-                                    "description": "Initial delivery status for the message"
-                                  }
-                                }
-                              }
-                            },
-                            "chat": {
-                              "type": "object",
-                              "properties": {
-                                "organization_id": {
-                                  "type": "integer",
-                                  "description": "Internal organization identifier"
-                                },
-                                "wam_id": {
-                                  "type": "string",
-                                  "description": "WhatsApp Business Account (WABA) ID"
-                                },
-                                "contact_id": {
-                                  "type": "integer",
-                                  "description": "Internal contact record identifier"
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "description": "Chat type/category"
-                                },
-                                "metadata": {
-                                  "type": "string",
-                                  "format": "style",
-                                  "description": "Additional chat metadata (serialized)"
-                                },
-                                "media_id": {
-                                  "nullable": true,
-                                  "description": "Associated media identifier if applicable"
-                                },
-                                "status": {
-                                  "type": "string",
-                                  "description": "Chat status (e.g. open, closed)"
-                                },
-                                "created_at": {
-                                  "type": "string",
-                                  "format": "style",
-                                  "description": "Creation timestamp"
-                                },
-                                "uuid": {
-                                  "type": "string",
-                                  "description": "Chat UUID"
-                                },
-                                "id": {
-                                  "type": "integer",
-                                  "description": "Chat numeric identifier"
-                                }
-                              }
-                            }
-                          }
+            "delete": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Delete a contact",
+                "description": "Delete a contact.",
+                "operationId": "8bdc893fc9ee2cdbe3ecaf7158b068e7",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
                         }
-                      }
                     }
-                  }
-                }
-              }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contact deleted"
+                    },
+                    "404": {
+                        "description": "Contact not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
-          }
-  }
-        
-      }
-    },
-    "/api/media/upload": {
-      "parameters": [],
-      "post": {
-        "summary": "Upload media file",
-  "description": "Upload a media file for later sending.",
-  "tags": ["Media"],
-  "operationId": "upload-media",
-        "parameters": [],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/templates": {
-      "parameters": [],
-      "get": {
-        "summary": "Get all Message Templates",
-  "description": "Retrieve all available message templates.",
-  "tags": ["Templates"],
-  "operationId": "list-templates",
-        "parameters": [],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/contacts/notes": {
-      "parameters": [],
-      "post": {
-        "summary": "Add Contact Notes",
-  "description": "Add a note to a contact.",
-  "tags": ["Notes"],
-  "operationId": "add-contact-note",
-        "parameters": [],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Note added successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {"type": "integer", "description": "HTTP status code"},
-                    "message": {"type": "string", "description": "Result message"},
-                    "data": {"type": "object", "description": "Created note resource (if returned)"}
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": ["contact", "note"],
-                "properties": {
-                  "contact": {
-                    "type": "string",
-                    "description": "UUID or identifier of the contact"
-                  },
-                  "note": {
-                    "type": "string",
-                    "description": "Free-form note text to attach to the contact"
-                  }
-                }
-              }
+        "/api/contacts": {
+            "get": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "List all contacts",
+                "description": "List all contacts.",
+                "operationId": "24b024badecf4adb673b5a5ecb6c4393",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of contacts"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Create a new contact",
+                "description": "Create or update a contact.",
+                "operationId": "3501146101a09b94665610d1772e8193",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "first_name",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Contact created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
-          }
+        },
+        "/api/contact-groups": {
+            "get": {
+                "tags": [
+                    "Contact Groups"
+                ],
+                "summary": "List all contact groups",
+                "description": "List all contact groups.",
+                "operationId": "bd9523cb1415199627fe7f730257ec38",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of contact groups",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "uuid": {
+                                                        "type": "string",
+                                                        "example": "group-uuid-123"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "VIP Customers"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-08-09T12:00:00Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-08-09T12:00:00Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Contact Groups"
+                ],
+                "summary": "Create a new contact group",
+                "description": "Create or update a contact group.",
+                "operationId": "83402693aecca9ee48e721f0ce086ad0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "VIP Customers"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Contact group created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "group-uuid-123"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Request processed successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/contact-groups/{uuid}": {
+            "put": {
+                "tags": [
+                    "Contact Groups"
+                ],
+                "summary": "Update a contact group",
+                "operationId": "cfe2c210af8d4cc68270b734ccd663c8",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "VIP Customers"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Contact group updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "group-uuid-123"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Request processed successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Contact Groups"
+                ],
+                "summary": "Delete a contact group",
+                "description": "Delete a contact group.",
+                "operationId": "1f7b8517c7681f4e21b55056e7daf6ac",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contact group deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "group-uuid-123"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Request processed successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Contact group not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/canned-replies": {
+            "post": {
+                "tags": [
+                    "Canned Replies"
+                ],
+                "summary": "Create a new canned reply",
+                "description": "Create a new canned reply.",
+                "operationId": "215d3ddaee2683f4df13cf502570cd12",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "message"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Greeting"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "Hello, how can I help you?"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Canned reply created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "canned-uuid-123"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Request processed successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/canned-replies/{uuid}": {
+            "put": {
+                "tags": [
+                    "Canned Replies"
+                ],
+                "summary": "Update a canned reply",
+                "operationId": "fb98b4ef17b9c6a2a367d3b550c9228f",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Greeting"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "Hello, how can I help you?"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Canned reply updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "canned-uuid-123"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Request processed successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Canned Replies"
+                ],
+                "summary": "Delete a canned reply",
+                "description": "Delete a canned reply.",
+                "operationId": "17ddfe5ffcb9e175dd69aa91c8192840",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Canned reply deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "canned-uuid-123"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Request processed successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Canned reply not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/send": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Send a WhatsApp message",
+                "operationId": "0a12e3b03e63242f200677f954cba21b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "contactUuId",
+                                    "messageContent"
+                                ],
+                                "properties": {
+                                    "contactUuId": {
+                                        "type": "string",
+                                        "example": "contact-uuid-123"
+                                    },
+                                    "messageContent": {
+                                        "type": "string",
+                                        "example": "Hello!"
+                                    },
+                                    "header": {
+                                        "type": "string",
+                                        "example": "Header text"
+                                    },
+                                    "footer": {
+                                        "type": "string",
+                                        "example": "Footer text"
+                                    },
+                                    "buttons": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "reply"
+                                                },
+                                                "reply": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string",
+                                                            "example": "unique-postback-id"
+                                                        },
+                                                        "title": {
+                                                            "type": "string",
+                                                            "example": "First Button’s Title"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "contactUuId": "contact-uuid-123",
+                                "messageContent": "Hello!",
+                                "header": "Header text",
+                                "footer": "Footer text",
+                                "buttons": [
+                                    {
+                                        "type": "reply",
+                                        "reply": {
+                                            "id": "unique-postback-id",
+                                            "title": "First Button’s Title"
+                                        }
+                                    },
+                                    {
+                                        "type": "reply",
+                                        "reply": {
+                                            "id": "unique-postback-id",
+                                            "title": "Second Button’s Title"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Message sent successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/send/template": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Send a template message",
+                "description": "Send a template message.",
+                "operationId": "8e073baa37a9502441f0c02ad3127e0b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "phone",
+                                    "template"
+                                ],
+                                "properties": {
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "template": {
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Template message sent"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/send/media": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Send a media message",
+                "description": "Send a media message.",
+                "operationId": "2af8f11674027c3f8950789d7c902d8d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "phone",
+                                    "media_type",
+                                    "media_url",
+                                    "caption",
+                                    "file_name"
+                                ],
+                                "properties": {
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "media_type": {
+                                        "type": "string"
+                                    },
+                                    "media_url": {
+                                        "type": "string"
+                                    },
+                                    "caption": {
+                                        "type": "string"
+                                    },
+                                    "file_name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Media message sent"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/templates": {
+            "get": {
+                "tags": [
+                    "Templates"
+                ],
+                "summary": "List all templates",
+                "description": "List all templates.",
+                "operationId": "a98d444f07561365acb75f78379ee20e",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of templates"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/get-conversations/{uuid}": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get conversations for a contact",
+                "description": "Get conversations for a contact or all contacts.",
+                "operationId": "de40bfa94ecbe46867ff557705352f13",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Conversations found"
+                    },
+                    "404": {
+                        "description": "Contact not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/upload/media": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Upload media file",
+                "description": "Upload media file.",
+                "operationId": "b160a558de40db91431207bc008a71c1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "base64": {
+                                        "type": "string"
+                                    },
+                                    "file_url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "File uploaded"
+                    },
+                    "400": {
+                        "description": "No file provided"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/contacts/{uuid}/notes": {
+            "get": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "List all notes for a contact",
+                "description": "List all notes for a contact by contact UUID.",
+                "operationId": "2407c695af28e9a112ca7a98c331c411",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Notes found"
+                    },
+                    "404": {
+                        "description": "Contact not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/contacts/notes": {
+            "post": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Store a note for a contact",
+                "description": "Store a note for a contact.",
+                "operationId": "57b441a28336cd20fb881326bcf6b4f7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "contacts",
+                                    "note"
+                                ],
+                                "properties": {
+                                    "contacts": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "note": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Note added"
+                    },
+                    "404": {
+                        "description": "Contact not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/tickets/{uuid}/update": {
+            "post": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Update the status of a ticket",
+                "description": "Update the status of a ticket.",
+                "operationId": "79d0ee71e682243139b7b97ee12c33fb",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Status updated"
+                    },
+                    "404": {
+                        "description": "Contact or ticket not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/tickets/{uuid}/assign": {
+            "post": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Assign a ticket to a team member",
+                "description": "Assign a ticket to a team member.",
+                "operationId": "9d4b57b2c021cdd9b1c78ab1ac8ab43c",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ticket assigned"
+                    },
+                    "404": {
+                        "description": "Contact, ticket, or user not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/team": {
+            "get": {
+                "tags": [
+                    "Team"
+                ],
+                "summary": "List all team members",
+                "description": "List all team members for an organization.",
+                "operationId": "7ccbcc29610b15c7bd3e7e559a110cc3",
+                "parameters": [
+                    {
+                        "name": "organization",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of team members",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "uuid": {
+                                                        "type": "string",
+                                                        "example": "team-uuid-123"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Jane Doe"
+                                                    },
+                                                    "role": {
+                                                        "type": "string",
+                                                        "example": "manager"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "jane.doe@example.com"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-08-09T12:00:00Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-08-09T12:00:00Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/contacts/search": {
+            "post": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Search contacts",
+                "description": "Search contacts by first_name, last_name, or phone.",
+                "operationId": "3aeb627d3000ceef418d6a3fa305d717",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "search"
+                                ],
+                                "properties": {
+                                    "search": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Contacts found"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/contacts/with-last-chats": {
+            "post": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Get all contacts with last chats and their chatsCount",
+                "description": "Get all contacts with last chats and their chatsCount.",
+                "operationId": "dd68e8724ce4dbff6e40ad2586150887",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "search": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Contacts with last chats returned"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
-      }
     },
-    "/api/contacts/{{uuid}}/notes": {
-      "parameters": [
+    "tags": [
         {
-          "name": "uuid",
-          "in": "path",
-          "required": true,
-          "description": "(Required) ",
-          "example": "string",
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "get": {
-        "summary": "Get Contact Notes",
-  "description": "Retrieve notes for a contact.",
-  "tags": ["Notes"],
-  "operationId": "list-contact-notes",
-        "parameters": [],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/conversations/{{uuid}}": {
-      "parameters": [
+            "name": "Contacts",
+            "description": "Contacts"
+        },
         {
-          "name": "uuid",
-          "in": "path",
-          "required": true,
-          "description": "(Required) ",
-          "example": "string",
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "get": {
-        "summary": "Get conversations for a Contact",
-  "description": "Retrieve conversation history for a contact.",
-  "tags": ["Conversations"],
-  "operationId": "get-contact-conversations",
-        "parameters": [],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/login": {
-      "parameters": [],
-      "post": {
-        "summary": "Login",
-  "description": "Authenticate and obtain an access token.",
-  "tags": ["Auth"],
-  "operationId": "login",
-        "parameters": [],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Authenticated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {"type": "integer", "description": "HTTP status code"},
-                    "token": {"type": "string", "description": "JWT or session token"},
-                    "user": {"type": "object", "description": "Authenticated user profile"}
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
+            "name": "Contact Groups",
+            "description": "Contact Groups"
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": ["email", "password"],
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "format": "email",
-                    "description": "User email address"
-                  },
-                  "password": {
-                    "type": "string",
-                    "description": "User password"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/check-api-key": {
-      "parameters": [],
-      "get": {
-        "summary": "Check API Key",
-  "description": "Verify that the provided API key (token) is valid.",
-  "tags": ["Auth"],
-  "operationId": "check-api-key",
-        "parameters": [],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/api/tickets/{{uuid}}/update": {
-      "parameters": [
         {
-          "name": "uuid",
-          "in": "path",
-          "required": true,
-          "description": "(Required) ",
-          "example": "string",
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "post": {
-        "summary": "Ticket Assign",
-  "description": "Assign a ticket to a user.",
-  "tags": ["Tickets"],
-  "operationId": "assign-ticket",
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "query",
-            "required": false,
-            "example": "1",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Ticket updated/assigned successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {"type": "integer", "description": "HTTP status code"},
-                    "message": {"type": "string", "description": "Result message"},
-                    "ticket": {"type": "object", "description": "Updated ticket resource"}
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
+            "name": "Canned Replies",
+            "description": "Canned Replies"
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": ["user_id"],
-                "properties": {
-                  "user_id": {
-                    "type": "integer",
-                    "description": "User ID to assign the ticket to"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/tickets/status-counts": {
-      "parameters": [],
-      "post": {
-        "summary": "Get Ticket Count by Status",
-  "description": "Retrieve ticket counts grouped by status.",
-  "tags": ["Tickets"],
-  "operationId": "ticket-status-counts",
-        "parameters": [],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Counts retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statusCode": {"type": "integer", "description": "HTTP status code"},
-                    "counts": {"type": "object", "description": "Map of status name to count"}
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
+        {
+            "name": "Messages",
+            "description": "Messages"
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": ["status"],
-                "properties": {
-                  "user_id": {
-                    "type": "string",
-                    "description": "Filter counts for tickets assigned to this user (optional)"
-                  },
-                  "status": {
-                    "type": "string",
-                    "description": "Status to filter by or aggregate"
-                  }
-                }
-              }
+        {
+            "name": "Templates",
+            "description": "Templates"
+        },
+        {
+            "name": "Tickets",
+            "description": "Tickets"
+        },
+        {
+            "name": "Team",
+            "description": "Team"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
             }
-          }
         }
-      }
-    },
-    "/api/team": {
-      "parameters": [],
-      "get": {
-        "summary": "Get Users",
-  "description": "Retrieve a list of team users.",
-  "tags": ["Team"],
-  "operationId": "list-users",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
-          }
-        }
-      }
     }
-  }
 }
