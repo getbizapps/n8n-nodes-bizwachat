@@ -31,7 +31,7 @@ export class Bizwachat implements INodeType {
 				Accept: 'application/json',
 				'Content-Type': 'application/json'
 			},
-			baseURL: 'https://bizwachat.com/api',
+			baseURL: 'https://bizwachat.com',
 		},
 		properties: properties,
 	};
