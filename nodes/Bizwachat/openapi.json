@@ -550,15 +550,30 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "title",
-                                    "message"
+                                    "name",
+                                    "trigger",
+                                    "match_criteria",
+                                    "response_type",
+                                    "response"
                                 ],
                                 "properties": {
-                                    "title": {
+                                    "name": {
                                         "type": "string",
                                         "example": "Greeting"
                                     },
-                                    "message": {
+                                    "trigger": {
+                                        "type": "string",
+                                        "example": "hello"
+                                    },
+                                    "match_criteria": {
+                                        "type": "string",
+                                        "example": "exact match"
+                                    },
+                                    "response_type": {
+                                        "type": "string",
+                                        "example": "text"
+                                    },
+                                    "response": {
                                         "type": "string",
                                         "example": "Hello, how can I help you?"
                                     }
@@ -622,12 +637,31 @@
                     "content": {
                         "application/json": {
                             "schema": {
+                                "required": [
+                                    "name",
+                                    "trigger",
+                                    "match_criteria",
+                                    "response_type",
+                                    "response"
+                                ],
                                 "properties": {
-                                    "title": {
+                                    "name": {
                                         "type": "string",
                                         "example": "Greeting"
                                     },
-                                    "message": {
+                                    "trigger": {
+                                        "type": "string",
+                                        "example": "hello"
+                                    },
+                                    "match_criteria": {
+                                        "type": "string",
+                                        "example": "exact match"
+                                    },
+                                    "response_type": {
+                                        "type": "string",
+                                        "example": "text"
+                                    },
+                                    "response": {
                                         "type": "string",
                                         "example": "Hello, how can I help you?"
                                     }
@@ -730,17 +764,29 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "contactUuId",
-                                    "messageContent"
+                                    "phone",
+                                    "message"
                                 ],
                                 "properties": {
-                                    "contactUuId": {
+                                    "phone": {
                                         "type": "string",
-                                        "example": "contact-uuid-123"
+                                        "example": "+1234567890"
                                     },
-                                    "messageContent": {
+                                    "message": {
                                         "type": "string",
                                         "example": "Hello!"
+                                    },
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "John"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "example": "Doe"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "john.doe@example.com"
                                     },
                                     "header": {
                                         "type": "string",
@@ -777,28 +823,6 @@
                                     }
                                 },
                                 "type": "object"
-                            },
-                            "example": {
-                                "contactUuId": "contact-uuid-123",
-                                "messageContent": "Hello!",
-                                "header": "Header text",
-                                "footer": "Footer text",
-                                "buttons": [
-                                    {
-                                        "type": "reply",
-                                        "reply": {
-                                            "id": "unique-postback-id",
-                                            "title": "First Button\u2019s Title"
-                                        }
-                                    },
-                                    {
-                                        "type": "reply",
-                                        "reply": {
-                                            "id": "unique-postback-id",
-                                            "title": "Second Button\u2019s Title"
-                                        }
-                                    }
-                                ]
                             }
                         }
                     }
@@ -810,9 +834,9 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "example": 200
                                         },
                                         "data": {
                                             "type": "object"
