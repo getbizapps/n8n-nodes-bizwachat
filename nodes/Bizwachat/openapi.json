@@ -1,19 +1,19 @@
 {
-  "openapi": "3.0.3",
+  "openapi": "3.0.1",
   "info": {
-    "title": "BizCRM Chats",
-    "description": "API Documentation",
-    "version": "1.0.0"
+    "title": "Bizwachat",
+    "description": "Bizwachat API Documentation",
+    "version": "1.0.1"
   },
   "servers": [
     {
-      "url": "https://bizcrmwa-sw.test/api",
-      "description": "Default Server"
+      "url": "https://bizwachat.com",
+      "description": "Default API Server"
     }
   ],
   "tags": [
     {
-      "name": "check-api-key",
+      "name": "validate",
       "description": "Endpoints related to check-api-key"
     },
     {
@@ -65,7 +65,7 @@
     "/api/check-api-key": {
       "get": {
         "tags": [
-          "check-api-key"
+          "validate"
         ],
         "summary": "[GET] api/check-api-key",
         "parameters": [
@@ -91,7 +91,7 @@
       },
       "post": {
         "tags": [
-          "check-api-key"
+          "validate"
         ],
         "summary": "[POST] api/check-api-key",
         "parameters": [
@@ -99,6 +99,11 @@
             "$ref": "#/components/parameters/X-Custom-Header"
           }
         ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -179,6 +184,11 @@
             "$ref": "#/components/parameters/X-Custom-Header"
           }
         ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Sent 200",
@@ -259,6 +269,11 @@
             "$ref": "#/components/parameters/X-Custom-Header"
           }
         ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Template Sent 200",
@@ -319,6 +334,11 @@
             "$ref": "#/components/parameters/X-Custom-Header"
           }
         ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Media Sent 200",
@@ -379,6 +399,11 @@
           "upload"
         ],
         "summary": "[POST] api/upload/media",
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "parameters": [
           {
             "$ref": "#/components/parameters/X-Custom-Header"
@@ -479,10 +504,39 @@
         ],
         "summary": "[GET] api/contacts/{uuid}",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Contact UUID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "organization",
+                        "in": "query",
+                        "description": "Organization ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "User ID (for ticket assignment)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Success 200",
@@ -503,10 +557,20 @@
         ],
         "summary": "[PUT] api/contacts/{uuid}",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -563,10 +627,21 @@
         ],
         "summary": "[DELETE] api/contacts/{uuid}",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+
         "responses": {
           "200": {
             "description": "Deleted 200",
@@ -588,11 +663,29 @@
           "contacts"
         ],
         "summary": "[GET] api/contacts",
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
         "responses": {
           "200": {
             "description": "List 200",
@@ -617,6 +710,11 @@
             "$ref": "#/components/parameters/X-Custom-Header"
           }
         ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -675,10 +773,20 @@
         ],
         "summary": "[GET] api/contacts/{uuid}/notes",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -707,6 +815,11 @@
             "$ref": "#/components/parameters/X-Custom-Header"
           }
         ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -759,6 +872,11 @@
             "$ref": "#/components/parameters/X-Custom-Header"
           }
         ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -811,11 +929,11 @@
           "contacts"
         ],
         "summary": "[POST] api/contacts/with-last-chats",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -879,10 +997,28 @@
         ],
         "summary": "[GET] api/contact-groups",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Success 200",
@@ -907,6 +1043,11 @@
             "$ref": "#/components/parameters/X-Custom-Header"
           }
         ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -950,10 +1091,20 @@
         ],
         "summary": "[PUT] api/contact-groups/{uuid}",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -995,10 +1146,20 @@
         ],
         "summary": "[DELETE] api/contact-groups/{uuid}",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Deleted 200",
@@ -1044,11 +1205,12 @@
           "canned-replies"
         ],
         "summary": "[POST] api/canned-replies",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -1112,10 +1274,20 @@
         ],
         "summary": "[PUT] api/canned-replies/{uuid}",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -1203,10 +1375,28 @@
         ],
         "summary": "[GET] api/templates",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Templates 200",
@@ -1229,10 +1419,20 @@
         ],
         "summary": "[GET] api/get-conversations/{uuid?}",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                 "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -1257,10 +1457,20 @@
         ],
         "summary": "[POST] api/tickets/{uuid}/update",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -1304,10 +1514,20 @@
         ],
         "summary": "[POST] api/tickets/{uuid}/assign",
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -1350,11 +1570,11 @@
           "tickets"
         ],
         "summary": "[POST] api/tickets/status-counts",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -1402,11 +1622,21 @@
           "team"
         ],
         "summary": "[GET] api/team",
+        "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
         "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+                    {
+                        "name": "organization",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
         "responses": {
           "200": {
             "description": "Team List 200",
@@ -1424,25 +1654,15 @@
     }
   },
   "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
-      }
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
     },
-    "parameters": {
-      "X-Custom-Header": {
-        "name": "X-Custom-Header",
-        "in": "header",
-        "required": false,
-        "schema": {
-          "type": "string"
-        },
-        "description": "Optional custom header"
-      }
-    }
-  },
   "security": [
     {
       "bearerAuth": []
