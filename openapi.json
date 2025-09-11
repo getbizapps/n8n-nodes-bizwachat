@@ -1,0 +1,1262 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Bizwachat",
+    "version": "1.0.0",
+    "description": "API Documentation"
+  },
+  "servers": [
+    {
+      "url": "https://bizwachat.com"
+  ],
+  "paths": {
+    "/api/check-api-key": {
+      "parameters": [],
+      "get": {
+        "summary": "[GET] api/check-api-key",
+        "tags": ["check--key"],
+        "parameters": [
+          {"name": "Accept", "in": "header", "required": false, "example": "application/json", "schema": {"type": "string"}},
+          {"name": "Content-Type", "in": "header", "required": false, "example": "application/json", "schema": {"type": "string"}}
+        ],
+        "responses": {"200": {"headers": {"Content-Type": {"schema": {"type": "string"}, "example": "application/json"}}, "description": "successfully"}}
+      },
+      "post": {
+        "summary": "[POST] api/check-api-key",
+        "tags": ["check--key"],
+        "parameters": [
+          {"name": "Accept", "in": "header", "required": false, "example": "application/json", "schema": {"type": "string"}},
+          {"name": "Content-Type", "in": "header", "required": false, "example": "application/json", "schema": {"type": "string"}}
+        ],
+        "responses": {"200": {"headers": {"Content-Type": {"schema": {"type": "string"}, "example": "application/json"}}, "description": "successfully"}}
+                "required": ["username", "password"],
+                "properties": {
+                  "username": {"type": "string", "description": "User's login username."},
+                  "password": {"type": "string", "description": "User's login password."}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "headers": {"Content-Type": {"schema": {"type": "string"}, "example": "application/json"}},
+            "description": "successfully"
+          }
+        }
+      }
+    },
+        "summary": "[POST] api/send/template",
+        "tags": [
+          "send",
+          "template"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+              "requestBody": {
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+  "/api/send/media": {
+      "parameters": [],
+      "post": {
+        "summary": "[POST] api/send/media",
+        "tags": [
+      },
+          "send",
+          "media"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+    "/api/send": {
+      "parameters": [],
+      "post": {
+        "summary": "[POST] api/send",
+        "tags": [
+          "send"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["phone", "message", "header", "footer", "buttons"],
+                  "properties": {
+                    "phone": {
+          },
+                      "type": "string",
+                      "description": "Recipient's phone number in international format."
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Text message to send."
+                    },
+                    "header": {
+                      "type": "string",
+                      "description": "Header text for the message."
+                    },
+                    "footer": {
+                      "type": "string",
+                      "description": "Footer text for the message."
+                    },
+                    "buttons": {
+                      "type": "array",
+                      "description": "Buttons options you would like to provide to user.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string", "description": "Button unique identifier." },
+                          "title": { "type": "string", "description": "Button display title." }
+                        },
+                        "required": ["id", "title"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "Sent 200"
+          }
+        }
+      }
+    },
+    "/api/upload/media": {
+      "parameters": [],
+      "post": {
+        "summary": "[POST] api/upload/media",
+        "tags": [
+          "upload",
+          "media"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/campaigns": {
+      "parameters": [],
+      "post": {
+        "summary": "[POST] api/campaigns",
+        "tags": [
+          "campaigns"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/contacts/{uuid}/notes": {
+      "parameters": [],
+      "get": {
+        "summary": "[GET] api/contacts/{uuid}/notes",
+        "tags": [
+          "contacts",
+          "notes"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/contacts/notes": {
+      "parameters": [],
+      "post": {
+        "summary": "[POST] api/contacts/notes",
+        "tags": [
+          "contacts",
+          "notes"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/contacts/search": {
+      "parameters": [],
+      "post": {
+        "summary": "[POST] api/contacts/search",
+        "tags": [
+          "contacts",
+          "search"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/contacts/with-last-chats": {
+      "parameters": [],
+      "post": {
+        "summary": "[POST] api/contacts/with-last-chats",
+        "tags": [
+          "contacts",
+          "with-last-chats"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/contacts/{uuid}": {
+      "parameters": [],
+      "get": {
+        "summary": "[GET] api/contacts/{uuid}",
+        "tags": [
+          "contacts"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "Success 200"
+          }
+        }
+      },
+      "put": {
+        "summary": "[PUT] api/contacts/{uuid}",
+        "tags": [
+          "contacts"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "[DELETE] api/contacts/{uuid}",
+        "tags": [
+          "contacts"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "Deleted 200"
+          }
+        }
+      }
+    },
+    "/api/contacts": {
+      "parameters": [],
+      "get": {
+        "summary": "[GET] api/contacts",
+        "tags": [
+          "contacts"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+      "/api/send/template": {
+        "parameters": [],
+        "post": {
+          "summary": "[POST] api/send/template",
+          "tags": ["send", "template"],
+          "parameters": [
+            {"name": "Accept", "in": "header", "required": false, "example": "application/json", "schema": {"type": "string"}}
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["templateId", "phone", "parameters"],
+                  "properties": {
+                    "templateId": {"type": "string", "description": "ID of the template to send."},
+                    "phone": {"type": "string", "description": "Recipient's phone number."},
+                    "parameters": {
+                      "type": "array",
+                      "description": "Parameters for the template.",
+                      "items": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "headers": {"Content-Type": {"schema": {"type": "string"}, "example": "application/json"}},
+              "description": "successfully"
+            }
+          }
+        }
+      },
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "List 200"
+          }
+        }
+      },
+      "post": {
+        "summary": "[POST] api/contacts",
+        "tags": [
+          "contacts"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/contact-groups": {
+      "parameters": [],
+      "get": {
+        "summary": "[GET] api/contact-groups",
+        "tags": [
+          "contact-groups"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "Success 200"
+          }
+        }
+      },
+      "post": {
+        "summary": "[POST] api/contact-groups",
+        "tags": [
+          "contact-groups"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/contact-groups/{uuid}": {
+      "parameters": [],
+      "put": {
+        "summary": "[PUT] api/contact-groups/{uuid}",
+        "tags": [
+          "contact-groups"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "[DELETE] api/contact-groups/{uuid}",
+        "tags": [
+          "contact-groups"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "Deleted 200"
+          }
+        }
+      }
+    },
+    "/api/canned-replies": {
+      "parameters": [],
+      "get": {
+        "summary": "[GET] api/canned-replies",
+        "tags": [
+          "canned-replies"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "Success 200"
+          }
+        }
+      },
+      "post": {
+        "summary": "[POST] api/canned-replies",
+        "tags": [
+          "canned-replies"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/canned-replies/{uuid}": {
+      "parameters": [],
+      "put": {
+        "summary": "[PUT] api/canned-replies/{uuid}",
+        "tags": [
+          "canned-replies"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "[DELETE] api/canned-replies/{uuid}",
+        "tags": [
+          "canned-replies"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "Deleted 200"
+          }
+        }
+      }
+    },
+    "/api/templates": {
+      "parameters": [],
+      "get": {
+        "summary": "[GET] api/templates",
+        "tags": [
+          "templates"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "Templates 200"
+          }
+        }
+      }
+    },
+    "/api/get-conversations/{uuid": {
+      "parameters": [],
+      "get": {
+        "summary": "[GET] api/get-conversations/{uuid?}",
+        "tags": [
+          "get-conversations"
+        ],
+        "parameters": [
+          {
+            "name": "}",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/tickets/{uuid}/update": {
+      "parameters": [],
+      "post": {
+        "summary": "[POST] api/tickets/{uuid}/update",
+        "tags": [
+          "tickets",
+          "update"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/tickets/{uuid}/assign": {
+      "parameters": [],
+      "post": {
+        "summary": "[POST] api/tickets/{uuid}/assign",
+        "tags": [
+          "tickets",
+          "assign"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/tickets/status-counts": {
+      "parameters": [],
+      "post": {
+        "summary": "[POST] api/tickets/status-counts",
+        "tags": [
+          "tickets",
+          "status-counts"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    },
+    "/api/team": {
+      "parameters": [],
+      "get": {
+        "summary": "[GET] api/team",
+        "tags": [
+          "team"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "application/json"
+              }
+            },
+            "description": "successfully"
+          }
+        }
+      }
+    }
+  }
+}

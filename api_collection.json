@@ -1,0 +1,1477 @@
+{
+    "info": {
+        "name": "BizCRM Chats",
+        "description": "API Documentation",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{bearerToken}}",
+                "type": "string"
+            }
+        ]
+    },
+    "item": [
+        
+        {
+            "name": "check--key",
+            "item": [
+                {
+                    "name": "[GET] api/check-api-key",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/check-api-key",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "check-api-key"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "[POST] api/check-api-key",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/check-api-key",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "check-api-key"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "login",
+            "item": [
+                {
+                    "name": "[POST] api/login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/login",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                { "key": "email", "value": "your-email@example.com", "type": "text", "description": "User's email address." },
+                                { "key": "password", "value": "your-password", "type": "text", "description": "User's password." }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        
+        {
+            "name": "send",
+            "item": [
+                {
+                    "name": "[POST] api/send",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/send",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "send"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "phone",
+                                    "value": "+919980400522",
+                                    "type": "text",
+                                    "description": "Recipient's phone number in international format."
+                                },
+                                {
+                                    "key": "message",
+                                    "value": "Hello John, how are you?",
+                                    "type": "text",
+                                    "description": "Text message to send."
+                                },
+                                {
+                                    "key": "header",
+                                    "value": "Test header",
+                                    "type": "text",
+                                    "description": "Header text for the message (optional)."
+                                },
+                                {
+                                    "key": "footer",
+                                    "value": "Test footer",
+                                    "type": "text",
+                                    "description": "Footer text for the message (optional)."
+                                },
+                                {
+                                    "key": "buttons[0][id]",
+                                    "value": "fine_1",
+                                    "type": "text",
+                                    "description": "Button 1 unique identifier."
+                                },
+                                {
+                                    "key": "buttons[0][title]",
+                                    "value": "Deal",
+                                    "type": "text",
+                                    "description": "Button 1 display title."
+                                },
+                                {
+                                    "key": "buttons[1][id]",
+                                    "value": "bad_2",
+                                    "type": "text",
+                                    "description": "Button 2 unique identifier."
+                                },
+                                {
+                                    "key": "buttons[1][title]",
+                                    "value": "Lead",
+                                    "type": "text",
+                                    "description": "Button 2 display title."
+                                }
+                            ]
+                        }
+                    },
+                        "response": [
+                            {
+                                "name": "Sent 200",
+                                "status": "OK",
+                                "code": 200,
+                                "_body": "{\n  \"statusCode\": 200,\n  \"data\": { \"status\": \"sent\" }\n}",
+                                "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                            }
+                        ]
+                    },
+
+                {
+                    "name": "template",
+                    "item": [
+                        {
+                            "name": "[POST] api/send/template",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    { "key": "Accept", "value": "application/json", "type": "text" }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/api/send/template",
+                                    "host": [ "{{base_url}}" ],
+                                    "path": [ "api", "send", "template" ]
+                                },
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        { "key": "phone", "value": "+1 (968) 082-5846", "type": "text", "description": "Recipient phone number." },
+                                        { "key": "template[name]", "value": "car_insurance", "type": "text", "description": "Template name." },
+                                        { "key": "template[language][code]", "value": "en", "type": "text", "description": "Template language code." },
+                                        { "key": "template[components]", "value": "[...]", "type": "text", "description": "Template components as JSON string." }
+                                    ]
+                                }
+                            },
+                            "response": [
+                                {
+                                    "name": "Template Sent 200",
+                                    "status": "OK",
+                                    "code": 200,
+                                    "_body": "{\n  \"statusCode\": 200,\n  \"data\": { \"status\": \"sent\" }\n}\n",
+                                    "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "media",
+                    "item": [
+                        {
+                            "name": "[POST] api/send/media",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/api/send/media",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "send",
+                                        "media"
+                                    ]
+                                },
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "phone",
+                                            "value": "+1 (968) 082-5846",
+                                            "type": "text",
+                                            "description": "Recipient phone number."
+                                        },
+                                        {
+                                            "key": "media_type",
+                                            "value": "image",
+                                            "type": "text",
+                                            "description": "Media type: image/video/document."
+                                        },
+                                        {
+                                            "key": "media_url",
+                                            "value": "https://example.com/image.jpg",
+                                            "type": "text",
+                                            "description": "Public URL of the media."
+                                        },
+                                        {
+                                            "key": "caption",
+                                            "value": "your caption",
+                                            "type": "text",
+                                            "description": "Caption for the media (optional)."
+                                        },
+                                        {
+                                            "key": "file_name",
+                                            "value": "testFileName",
+                                            "type": "text",
+                                            "description": "File name for the uploaded media (optional)."
+                                        }
+                                    ]
+                                }
+                            },
+                                "response": [
+                                    {
+                                        "name": "Media Sent 200",
+                                        "status": "OK",
+                                        "code": 200,
+                                        "_body": "{\n  \"statusCode\": 200,\n  \"data\": { \"status\": \"sent\" }\n}\n",
+                                        "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                                    }
+                                ]
+
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "upload",
+            "item": [
+                {
+                    "name": "media",
+                    "item": [
+                        {
+                            "name": "[POST] api/upload/media",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/api/upload/media",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "upload",
+                                        "media"
+                                    ]
+                                },
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        { "key": "file", "type": "file", "src": "/path/to/file.jpg", "description": "File to upload." },
+                                        { "key": "organization", "value": "1", "type": "text", "description": "Organization id." }
+                                    ]
+                                },
+                                "response": [
+                                    {
+                                        "name": "Upload 200",
+                                        "status": "OK",
+                                        "code": 200,
+                                        "_body": "{\n  \"message\": \"File uploaded successfully.\",\n  \"media_url\": \"https://example.com/media.jpg\",\n  \"location\": \"amazon\"\n}\n",
+                                        "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "campaigns",
+            "item": [
+                {
+                    "name": "[POST] api/campaigns",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/campaigns",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "campaigns"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                { "key": "name", "value": "Campaign name", "type": "text", "description": "Campaign title (example)." }
+                            ]
+                        },
+                        "response": [
+                            {
+                                "name": "Success 200",
+                                "status": "OK",
+                                "code": 200,
+                                "_body": "{\n  \"statusCode\": 200,\n  \"id\": \"campaign-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}",
+                                "header": [
+                                    { "key": "Content-Type", "value": "application/json" }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "contacts",
+            "item": [
+                {
+                    "name": "[GET] api/contacts/{uuid}",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/contacts/{uuid}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contacts",
+                                "{uuid}"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Success 200",
+                            "status": "OK",
+                            "code": 200,
+                            "_body": "{\n  \"statusCode\": 200,\n  \"data\": { \"uuid\": \"123e4567-e89b-12d3-a456-426614174000\", \"first_name\": \"John\", \"phone\": \"+1234567890\" }\n}",
+                            "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                        }
+                    ]
+                },
+                {
+                    "name": "[GET] api/contacts",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/contacts",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contacts"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "List 200",
+                            "status": "OK",
+                            "code": 200,
+                            "_body": "{\n  \"statusCode\": 200,\n  \"data\": [{ \"uuid\": \"123e4567-e89b-12d3-a456-426614174000\", \"first_name\": \"John\" }],\n  \"meta\": { \"current_page\": 1, \"per_page\": 10 }\n}",
+                            "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                        }
+                    ]
+                },
+                {
+                    "name": "[POST] api/contacts",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/contacts",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contacts"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                { "key": "first_name", "value": "John", "type": "text", "description": "Contact first name." },
+                                { "key": "last_name", "value": "Doe", "type": "text", "description": "Contact last name (optional)." },
+                                { "key": "email", "value": "johndoe@gmail.com", "type": "text", "description": "Contact email (optional)." },
+                                { "key": "phone", "value": "+1 (968) 082-5846", "type": "text", "description": "Contact phone in international format." }
+                            ]
+                        },
+                        "response": [
+                            {
+                                "name": "Created 200",
+                                "status": "OK",
+                                "code": 200,
+                                "_body": "{\n  \"statusCode\": 200,\n  \"id\": \"contact-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}",
+                                "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "[PUT] api/contacts/{uuid}",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/contacts/{uuid}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contacts",
+                                "{uuid}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                { "key": "first_name", "value": "John", "type": "text", "description": "Contact first name." },
+                                { "key": "last_name", "value": "Doe", "type": "text", "description": "Contact last name (optional)." },
+                                { "key": "email", "value": "johndoe@gmail.com", "type": "text", "description": "Contact email (optional)." },
+                                { "key": "phone", "value": "+1 (968) 082-5846", "type": "text", "description": "Contact phone in international format." }
+                            ]
+                        },
+                        "response": [
+                            {
+                                "name": "Updated 200",
+                                "status": "OK",
+                                "code": 200,
+                                "_body": "{\n  \"statusCode\": 200,\n  \"id\": \"contact-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}",
+                                "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "[DELETE] api/contacts/{uuid}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/contacts/{uuid}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contacts",
+                                "{uuid}"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Deleted 200",
+                            "status": "OK",
+                            "code": 200,
+                            "_body": "{\n  \"statusCode\": 200,\n  \"id\": \"contact-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}",
+                            "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                        }
+                    ]
+                },
+                {
+                    "name": "",
+                    "item": [
+                        {
+                            "name": "notes",
+                            "item": [
+                                {
+                                    "name": "[GET] api/contacts/{uuid}/notes",
+                                    "request": {
+                                        "method": "GET",
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "url": {
+                                            "raw": "{{base_url}}/api/contacts/{uuid}/notes",
+                                            "host": [
+                                                "{{base_url}}"
+                                            ],
+                                            "path": [
+                                                "api",
+                                                "contacts",
+                                                "{uuid}",
+                                                "notes"
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "notes",
+                    "item": [
+                        {
+                            "name": "[POST] api/contacts/notes",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/api/contacts/notes",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "contacts",
+                                        "notes"
+                                    ]
+                                },
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        { "key": "contact", "value": "{uuid}", "type": "text", "description": "UUID of the contact." },
+                                        { "key": "notes", "value": "This is a note", "type": "text", "description": "Note text to add to the contact." }
+                                    ]
+                                },
+                                "response": [
+                                    {
+                                        "name": "Note Added 200",
+                                        "status": "OK",
+                                        "code": 200,
+                                        "_body": "{\n  \"status\": \"success\",\n  \"message\": \"Note added successfully!\"\n}",
+                                        "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "search",
+                    "item": [
+                        {
+                            "name": "[POST] api/contacts/search",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/api/contacts/search",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "contacts",
+                                        "search"
+                                    ]
+                                },
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        { "key": "search", "value": "John", "type": "text", "description": "Search term for first name, last name, or phone." },
+                                        { "key": "page", "value": "1", "type": "text", "description": "Page number (optional)." },
+                                        { "key": "per_page", "value": "10", "type": "text", "description": "Results per page (optional)." }
+                                    ]
+                                },
+                                "response": [
+                                    {
+                                        "name": "Search Results 200",
+                                        "status": "OK",
+                                        "code": 200,
+                                        "_body": "{\n  \"statusCode\": 200,\n  \"data\": [{ \"uuid\": \"123e4567\", \"first_name\": \"John\" }]\n}",
+                                        "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "with-last-chats",
+                    "item": [
+                        {
+                            "name": "[POST] api/contacts/with-last-chats",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/api/contacts/with-last-chats",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "contacts",
+                                        "with-last-chats"
+                                    ]
+                                },
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        { "key": "organization", "value": "ORG_ID", "type": "text", "description": "Organization identifier (required)." },
+                                        { "key": "status", "value": "all", "type": "text", "description": "Filter by ticket status: all, unassigned, open, closed (optional)." },
+                                        { "key": "search", "value": "John", "type": "text", "description": "Search term for contacts (optional)." },
+                                        { "key": "page", "value": "1", "type": "text", "description": "Page number (optional)." },
+                                        { "key": "per_page", "value": "10", "type": "text", "description": "Results per page (optional)." }
+                                    ]
+                                },
+                                "response": [
+                                    {
+                                        "name": "With Last Chats 200",
+                                        "status": "OK",
+                                        "code": 200,
+                                        "_body": "{\n  \"statusCode\": 200,\n  \"data\": [ { \"uuid\": \"123e4567\", \"first_name\": \"John\", \"chatsCount\": 5 } ]\n}",
+                                        "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "contact-groups",
+            "item": [
+                {
+                    "name": "[GET] api/contact-groups",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/contact-groups",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contact-groups"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Success 200",
+                            "status": "OK",
+                            "code": 200,
+                            "_body": "{\n  \"statusCode\": 200,\n  \"data\": [{ \"uuid\": \"group-uuid-123\", \"name\": \"VIP Customers\" }]\n}",
+                            "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                        }
+                    ]
+                },
+                {
+                    "name": "[POST] api/contact-groups",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/contact-groups",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contact-groups"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                { "key": "name", "value": "Lead 5", "type": "text", "description": "Name of the contact group." }
+                            ]
+                        },
+                        "response": [
+                            {
+                                "name": "Created 200",
+                                "status": "OK",
+                                "code": 200,
+                                "_body": "{\n  \"statusCode\": 200,\n  \"id\": \"group-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}",
+                                "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "[PUT] api/contact-groups/{uuid}",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/contact-groups/{uuid}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contact-groups",
+                                "{uuid}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                { "key": "name", "value": "Lead 5", "type": "text", "description": "Updated name of the contact group." }
+                            ]
+                        },
+                        "response": [
+                            {
+                                "name": "Updated 200",
+                                "status": "OK",
+                                "code": 200,
+                                "_body": "{\n  \"statusCode\": 200,\n  \"id\": \"group-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}",
+                                "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "[DELETE] api/contact-groups/{uuid}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/contact-groups/{uuid}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contact-groups",
+                                "{uuid}"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Deleted 200",
+                            "status": "OK",
+                            "code": 200,
+                            "_body": "{\n  \"statusCode\": 200,\n  \"id\": \"group-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}",
+                            "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "canned-replies",
+            "item": [
+                {
+                    "name": "[GET] api/canned-replies",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/canned-replies",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "canned-replies"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Success 200",
+                            "status": "OK",
+                            "code": 200,
+                            "_body": "{\n  \"statusCode\": 200,\n  \"data\": [{ \"uuid\": \"canned-uuid-123\", \"title\": \"Greeting\", \"message\": \"Hello\" }]\n}",
+                            "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                        }
+                    ]
+                },
+                {
+                    "name": "[POST] api/canned-replies",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/canned-replies",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "canned-replies"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                { "key": "name", "value": "About Us", "type": "text", "description": "Name of the canned reply." },
+                                { "key": "trigger", "value": "what do you do?", "type": "text", "description": "Trigger phrase to match." },
+                                { "key": "match_criteria", "value": "contains", "type": "text", "description": "Match criteria: contains/exact (optional)." },
+                                { "key": "response_type", "value": "text", "type": "text", "description": "Response type (text/media)." },
+                                { "key": "response", "value": "We sell shoes", "type": "text", "description": "Response content." }
+                            ]
+                        },
+                        "response": [
+                            {
+                                "name": "Created 200",
+                                "status": "OK",
+                                "code": 200,
+                                "_body": "{\n  \"statusCode\": 200,\n  \"id\": \"canned-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}",
+                                "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "[PUT] api/canned-replies/{uuid}",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/canned-replies/{uuid}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "canned-replies",
+                                "{uuid}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                { "key": "name", "value": "About Us", "type": "text", "description": "Name of the canned reply." },
+                                { "key": "trigger", "value": "what do you do?", "type": "text", "description": "Trigger phrase to match." },
+                                { "key": "match_criteria", "value": "contains", "type": "text", "description": "Match criteria: contains/exact (optional)." },
+                                { "key": "response_type", "value": "text", "type": "text", "description": "Response type (text/media)." },
+                                { "key": "response", "value": "We sell shoes and clothes", "type": "text", "description": "Response content." }
+                            ]
+                        },
+                        "response": [
+                            {
+                                "name": "Updated 200",
+                                "status": "OK",
+                                "code": 200,
+                                "_body": "{\n  \"statusCode\": 200,\n  \"id\": \"canned-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}",
+                                "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "[DELETE] api/canned-replies/{uuid}",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/canned-replies/{uuid}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "canned-replies",
+                                "{uuid}"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Deleted 200",
+                            "status": "OK",
+                            "code": 200,
+                            "_body": "{\n  \"statusCode\": 200,\n  \"id\": \"canned-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}",
+                            "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "templates",
+            "item": [
+                {
+                    "name": "[GET] api/templates",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/templates",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "templates"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Templates 200",
+                            "status": "OK",
+                            "code": 200,
+                            "_body": "{\n  \"statusCode\": 200,\n  \"data\": []\n}",
+                            "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "get-conversations",
+            "item": [
+                {
+                    "name": "[GET] api/get-conversations/{uuid?}",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/get-conversations/{uuid?}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "get-conversations",
+                                "{uuid?}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "tickets",
+            "item": [
+                {
+                    "name": "",
+                    "item": [
+                        {
+                            "name": "update",
+                            "item": [
+                                {
+                                    "name": "[POST] api/tickets/{uuid}/update",
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "url": {
+                                            "raw": "{{base_url}}/api/tickets/{uuid}/update",
+                                            "host": [
+                                                "{{base_url}}"
+                                            ],
+                                            "path": [
+                                                "api",
+                                                "tickets",
+                                                "{uuid}",
+                                                "update"
+                                            ]
+                                        },
+                                        "body": {
+                                            "mode": "formdata",
+                                            "formdata": [
+                                                { "key": "status", "value": "open", "type": "text", "description": "Ticket status: open or closed." }
+                                            ]
+                                        },
+                                        "response": [
+                                            {
+                                                "name": "Updated 200",
+                                                "status": "OK",
+                                                "code": 200,
+                                                "_body": "{\n  \"status\": \"success\",\n  \"message\": \"Status updated successfully!\"\n}\n",
+                                                "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "assign",
+                            "item": [
+                                {
+                                    "name": "[POST] api/tickets/{uuid}/assign",
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "url": {
+                                            "raw": "{{base_url}}/api/tickets/{uuid}/assign",
+                                            "host": [
+                                                "{{base_url}}"
+                                            ],
+                                            "path": [
+                                                "api",
+                                                "tickets",
+                                                "{uuid}",
+                                                "assign"
+                                            ]
+                                        },
+                                        "body": {
+                                            "mode": "formdata",
+                                            "formdata": [
+                                                { "key": "user_id", "value": "1", "type": "text", "description": "User id to assign the ticket to." }
+                                            ]
+                                        },
+                                        "response": [
+                                            {
+                                                "name": "Assigned 200",
+                                                "status": "OK",
+                                                "code": 200,
+                                                "_body": "{\n  \"status\": \"success\",\n  \"message\": \"Ticket assigned successfully!\"\n}\n",
+                                                "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "status-counts",
+                    "item": [
+                        {
+                            "name": "[POST] api/tickets/status-counts",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{base_url}}/api/tickets/status-counts",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "tickets",
+                                        "status-counts"
+                                    ]
+                                },
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        { "key": "organization", "value": "ORG_ID", "type": "text", "description": "Organization id (required)." },
+                                        { "key": "user_id", "value": "USER_ID", "type": "text", "description": "User id (required)." }
+                                    ]
+                                },
+                                "response": [
+                                    {
+                                        "name": "Status Counts 200",
+                                        "status": "OK",
+                                        "code": 200,
+                                        "_body": "{\n  \"statusCode\": 200,\n  \"data\": { \"unassigned\": 0, \"open\": 1, \"closed\": 2, \"all\": 3 }\n}\n",
+                                        "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "team",
+            "item": [
+                {
+                    "name": "[GET] api/team",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/team",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "team"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Team List 200",
+                            "status": "OK",
+                            "code": 200,
+                            "_body": "{\n  \"status\": \"success\",\n  \"data\": []\n}",
+                            "header": [ { "key": "Content-Type", "value": "application/json" } ]
+                        }
+                    ]
+                }
+            ]
+        }
+        
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "https://bizcrmwa-sw.test"
+        },
+        {
+            "key": "bearerToken",
+            "value": "",
+            "type": "string",
+            "description": "Set your Bearer token here, used in Authorization: Bearer {{bearerToken}}"
+        }
+    ]
+}
