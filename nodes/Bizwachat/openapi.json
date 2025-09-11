@@ -1,727 +1,604 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Bizwachat",
-    "description": "Bizwachat API Documentation",
-    "version": "1.0.1"
+    "title": "BizCRM Chats",
+    "description": "API Documentation",
+    "version": "1.0.0",
+    "termsOfService": "https://bizwachat.com/terms",
+    "contact": {
+      "email": "hello@bizcrmapp.com"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/licenses/MIT"
+    }
   },
   "servers": [
     {
-      "url": "https://bizwachat.com",
-      "description": "Default API Server"
+      "url": "https://bizwachat.com/api"
     }
   ],
-  "tags": [
+  "security": [
     {
-      "name": "validate",
-      "description": "Endpoints related to check-api-key"
-    },
-    {
-      "name": "login",
-      "description": "Endpoints related to login"
-    },
-    {
-      "name": "send",
-      "description": "Endpoints related to send"
-    },
-    {
-      "name": "upload",
-      "description": "Endpoints related to upload"
-    },
-    {
-      "name": "campaigns",
-      "description": "Endpoints related to campaigns"
-    },
-    {
-      "name": "contacts",
-      "description": "Endpoints related to contacts"
-    },
-    {
-      "name": "contact-groups",
-      "description": "Endpoints related to contact-groups"
-    },
-    {
-      "name": "canned-replies",
-      "description": "Endpoints related to canned-replies"
-    },
-    {
-      "name": "templates",
-      "description": "Endpoints related to templates"
-    },
-    {
-      "name": "get-conversations",
-      "description": "Endpoints related to get-conversations"
-    },
-    {
-      "name": "tickets",
-      "description": "Endpoints related to tickets"
-    },
-    {
-      "name": "team",
-      "description": "Endpoints related to team"
+      "apiToken": []
     }
   ],
   "paths": {
-    "/api/check-api-key": {
+    "/check-api-key": {
       "get": {
-        "tags": [
-          "validate"
-        ],
         "summary": "[GET] api/check-api-key",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
-          }
-        }
-      },
-      "post": {
+        "description": "",
         "tags": [
-          "validate"
+          "Channel"
         ],
-        "summary": "[POST] api/check-api-key",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
-          }
-        }
-      }
-    },
-    "/api/login": {
-      "post": {
-        "tags": [
-          "login"
-        ],
-        "summary": "[POST] api/login",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+            "description": "Success"
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
           }
         },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "[POST] api/check-api-key",
+        "description": "",
+        "tags": [
+          "Channel"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "[POST] api/login",
+        "description": "",
+        "tags": [
+          "Channel"
+        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "email": {
-                    "type": "string",
-                    "description": "User's email address."
+                    "type": "string"
                   },
                   "password": {
-                    "type": "string",
-                    "description": "User's password."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "email",
-                  "password"
-                ]
+                }
               }
             }
           }
-        }
-      }
-    },
-    "/api/send": {
-      "post": {
-        "tags": [
-          "send"
-        ],
-        "summary": "[POST] api/send",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+        },
         "responses": {
           "200": {
-            "description": "Sent 200",
-            "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"data\": { \"status\": \"sent\" }\n}"
-              }
-            }
+            "description": "Success"
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
           }
         },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/send": {
+      "post": {
+        "summary": "[POST] api/send",
+        "description": "",
+        "tags": [
+          "Message"
+        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "phone": {
-                    "type": "string",
-                    "description": "Recipient's phone number in international format."
+                    "type": "string"
                   },
                   "message": {
-                    "type": "string",
-                    "description": "Text message to send."
+                    "type": "string"
                   },
                   "header": {
-                    "type": "string",
-                    "description": "Header text for the message (optional)."
+                    "type": "string"
                   },
                   "footer": {
-                    "type": "string",
-                    "description": "Footer text for the message (optional)."
+                    "type": "string"
                   },
                   "buttons[0][id]": {
-                    "type": "string",
-                    "description": "Button 1 unique identifier."
+                    "type": "string"
                   },
                   "buttons[0][title]": {
-                    "type": "string",
-                    "description": "Button 1 display title."
+                    "type": "string"
                   },
                   "buttons[1][id]": {
-                    "type": "string",
-                    "description": "Button 2 unique identifier."
+                    "type": "string"
                   },
                   "buttons[1][title]": {
-                    "type": "string",
-                    "description": "Button 2 display title."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "phone",
-                  "message",
-                  "header",
-                  "footer",
-                  "buttons[0][id]",
-                  "buttons[0][title]",
-                  "buttons[1][id]",
-                  "buttons[1][title]"
-                ]
+                }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/send/template": {
-      "post": {
-        "tags": [
-          "send"
-        ],
-        "summary": "[POST] api/send/template",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-        "responses": {
-          "200": {
-            "description": "Template Sent 200",
-            "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"data\": { \"status\": \"sent\" }\n}\n"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
           }
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            " application/json; charset=utf-8": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "phone": {
-                    "type": "string",
-                    "description": "Recipient phone number."
-                  },
-                  "template[name]": {
-                    "type": "string",
-                    "description": "Template name."
-                  },
-                  "template[language][code]": {
-                    "type": "string",
-                    "description": "Template language code."
-                  },
-                  "template[components]": {
-                    "type": "string",
-                    "description": "Template components as JSON string."
-                  }
-                },
-                "required": [
-                  "phone",
-                  "template[name]",
-                  "template[language][code]",
-                  "template[components]"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/send/media": {
-      "post": {
-        "tags": [
-          "send"
-        ],
-        "summary": "[POST] api/send/media",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
         "responses": {
           "200": {
-            "description": "Media Sent 200",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"data\": { \"status\": \"sent\" }\n}\n"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            " application/json; charset=utf-8": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "phone": {
-                    "type": "string",
-                    "description": "Recipient phone number."
-                  },
-                  "media_type": {
-                    "type": "string",
-                    "description": "Media type: image/video/document."
-                  },
-                  "media_url": {
-                    "type": "string",
-                    "description": "Public URL of the media."
-                  },
-                  "caption": {
-                    "type": "string",
-                    "description": "Caption for the media (optional)."
-                  },
-                  "file_name": {
-                    "type": "string",
-                    "description": "File name for the uploaded media (optional)."
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": {
+                    "status": "sent"
                   }
-                },
-                "required": [
-                  "phone",
-                  "media_type",
-                  "media_url",
-                  "caption",
-                  "file_name"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/upload/media": {
-      "post": {
-        "tags": [
-          "upload"
-        ],
-        "summary": "[POST] api/upload/media",
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
           }
         },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/send/template": {
+      "post": {
+        "summary": "[POST] api/send/template",
+        "description": "",
+        "tags": [
+          "Message"
+        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "template[name]": {
+                    "type": "string"
+                  },
+                  "template[language][code]": {
+                    "type": "string"
+                  },
+                  "template[components]": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": {
+                    "status": "sent"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/send/media": {
+      "post": {
+        "summary": "[POST] api/send/media",
+        "description": "",
+        "tags": [
+          "Message"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string"
+                  },
+                  "media_type": {
+                    "type": "string"
+                  },
+                  "media_url": {
+                    "type": "string"
+                  },
+                  "caption": {
+                    "type": "string"
+                  },
+                  "file_name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": {
+                    "status": "sent"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/upload/media": {
+      "post": {
+        "summary": "[POST] api/upload/media",
+        "description": "",
+        "tags": [
+          "Channel"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "file": {
-                    "type": "string",
-                    "description": "File to upload."
+                    "type": "string"
                   },
                   "organization": {
-                    "type": "string",
-                    "description": "Organization id."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "file",
-                  "organization"
-                ]
+                }
               }
             }
           }
-        }
-      }
-    },
-    "/api/campaigns": {
-      "post": {
-        "tags": [
-          "campaigns"
-        ],
-        "summary": "[POST] api/campaigns",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
+        },
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "message": "File uploaded successfully.",
+                  "media_url": "https://example.com/media.jpg",
+                  "location": "amazon"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
           }
         },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/campaigns": {
+      "post": {
+        "summary": "[POST] api/campaigns",
+        "description": "",
+        "tags": [
+          "Message"
+        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string",
-                    "description": "Campaign title (example)."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "name"
-                ]
+                }
               }
             }
           }
-        }
-      }
-    },
-    "/api/contacts/{uuid}": {
-      "get": {
-        "tags": [
-          "contacts"
-        ],
-        "summary": "[GET] api/contacts/{uuid}",
-        "parameters": [
-                    {
-                        "name": "uuid",
-                        "in": "path",
-                        "description": "Contact UUID",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "organization",
-                        "in": "query",
-                        "description": "Organization ID",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "user_id",
-                        "in": "query",
-                        "description": "User ID (for ticket assignment)",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+        },
         "responses": {
           "200": {
-            "description": "Success 200",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"data\": { \"uuid\": \"123e4567-e89b-12d3-a456-426614174000\", \"first_name\": \"John\", \"phone\": \"+1234567890\" }\n}"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "id": "campaign-uuid-123",
+                  "message": "Request processed successfully"
+                }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
           }
-        }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/contacts/{uuid}": {
+      "get": {
+        "summary": "[GET] api/contacts/{uuid}",
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": {
+                    "uuid": "123e4567-e89b-12d3-a456-426614174000",
+                    "first_name": "John",
+                    "phone": "+1234567890"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
       },
       "put": {
-        "tags": [
-          "contacts"
-        ],
         "summary": "[PUT] api/contacts/{uuid}",
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
         "parameters": [
-                    {
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "first_name": {
+                    "type": "string"
+                  },
+                  "last_name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "id": "contact-uuid-123",
+                  "message": "Request processed successfully"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
           }
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            " application/json; charset=utf-8": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "first_name": {
-                    "type": "string",
-                    "description": "Contact first name."
-                  },
-                  "last_name": {
-                    "type": "string",
-                    "description": "Contact last name (optional)."
-                  },
-                  "email": {
-                    "type": "string",
-                    "description": "Contact email (optional)."
-                  },
-                  "phone": {
-                    "type": "string",
-                    "description": "Contact phone in international format."
-                  }
-                },
-                "required": [
-                  "first_name",
-                  "last_name",
-                  "email",
-                  "phone"
-                ]
-              }
-            }
+        "security": [
+          {
+            "apiToken": []
           }
-        }
+        ]
       },
       "delete": {
-        "tags": [
-          "contacts"
-        ],
         "summary": "[DELETE] api/contacts/{uuid}",
-        "parameters": [
-                    {
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-
-        "responses": {
-          "200": {
-            "description": "Deleted 200",
-            "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"id\": \"contact-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
-          }
-        }
-      }
-    },
-    "/api/contacts": {
-      "get": {
+        "description": "",
         "tags": [
-          "contacts"
+          "Contact"
         ],
-        "summary": "[GET] api/contacts",
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-        "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-        "responses": {
-          "200": {
-            "description": "List 200",
-            "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"data\": [{ \"uuid\": \"123e4567-e89b-12d3-a456-426614174000\", \"first_name\": \"John\" }],\n  \"meta\": { \"current_page\": 1, \"per_page\": 10 }\n}"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "contacts"
-        ],
-        "summary": "[POST] api/contacts",
         "parameters": [
           {
-            "$ref": "#/components/parameters/X-Custom-Header"
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "id": "contact-uuid-123",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/contacts": {
+      "get": {
+        "summary": "[GET] api/contacts",
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": [
+                    {
+                      "uuid": "123e4567-e89b-12d3-a456-426614174000",
+                      "first_name": "John"
+                    }
+                  ],
+                  "meta": {
+                    "current_page": 1,
+                    "per_page": 10
+                  }
                 }
               }
             }
@@ -730,571 +607,497 @@
             "description": "Unauthorized - Invalid or missing token"
           }
         },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "[POST] api/contacts",
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "first_name": {
-                    "type": "string",
-                    "description": "Contact first name."
+                    "type": "string"
                   },
                   "last_name": {
-                    "type": "string",
-                    "description": "Contact last name (optional)."
+                    "type": "string"
                   },
                   "email": {
-                    "type": "string",
-                    "description": "Contact email (optional)."
+                    "type": "string"
                   },
                   "phone": {
-                    "type": "string",
-                    "description": "Contact phone in international format."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "first_name",
-                  "last_name",
-                  "email",
-                  "phone"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/contacts/{uuid}/notes": {
-      "get": {
-        "tags": [
-          "contacts"
-        ],
-        "summary": "[GET] api/contacts/{uuid}/notes",
-        "parameters": [
-                    {
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
-          }
-        }
-      }
-    },
-    "/api/contacts/notes": {
-      "post": {
-        "tags": [
-          "contacts"
-        ],
-        "summary": "[POST] api/contacts/notes",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
           }
         },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "id": "contact-uuid-123",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/contacts/{uuid}/notes": {
+      "get": {
+        "summary": "[GET] api/contacts/{uuid}/notes",
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/contacts/notes": {
+      "post": {
+        "summary": "[POST] api/contacts/notes",
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "contact": {
-                    "type": "string",
-                    "description": "UUID of the contact."
+                    "type": "string"
                   },
                   "notes": {
-                    "type": "string",
-                    "description": "Note text to add to the contact."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "contact",
-                  "notes"
-                ]
+                }
               }
             }
           }
-        }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "success",
+                  "message": "Note added successfully!"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
       }
     },
-    "/api/contacts/search": {
+    "/contacts/search": {
       "post": {
-        "tags": [
-          "contacts"
-        ],
         "summary": "[POST] api/contacts/search",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
+        "description": "",
+        "tags": [
+          "Contact"
         ],
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "search": {
+                    "type": "string"
+                  },
+                  "page": {
+                    "type": "string"
+                  },
+                  "per_page": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": [
+                    {
+                      "uuid": "123e4567",
+                      "first_name": "John"
+                    }
+                  ]
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
           }
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            " application/json; charset=utf-8": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "search": {
-                    "type": "string",
-                    "description": "Search term for first name, last name, or phone."
-                  },
-                  "page": {
-                    "type": "string",
-                    "description": "Page number (optional)."
-                  },
-                  "per_page": {
-                    "type": "string",
-                    "description": "Results per page (optional)."
-                  }
-                },
-                "required": [
-                  "search",
-                  "page",
-                  "per_page"
-                ]
-              }
-            }
+        "security": [
+          {
+            "apiToken": []
           }
-        }
+        ]
       }
     },
-    "/api/contacts/with-last-chats": {
+    "/contacts/with-last-chats": {
       "post": {
-        "tags": [
-          "contacts"
-        ],
         "summary": "[POST] api/contacts/with-last-chats",
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
-          }
-        },
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "organization": {
-                    "type": "string",
-                    "description": "Organization identifier (required)."
+                    "type": "string"
                   },
                   "status": {
-                    "type": "string",
-                    "description": "Filter by ticket status: all, unassigned, open, closed (optional)."
+                    "type": "string"
                   },
                   "search": {
-                    "type": "string",
-                    "description": "Search term for contacts (optional)."
+                    "type": "string"
                   },
                   "page": {
-                    "type": "string",
-                    "description": "Page number (optional)."
+                    "type": "string"
                   },
                   "per_page": {
-                    "type": "string",
-                    "description": "Results per page (optional)."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "organization",
-                  "status",
-                  "search",
-                  "page",
-                  "per_page"
-                ]
+                }
               }
             }
           }
-        }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": [
+                    {
+                      "uuid": "123e4567",
+                      "first_name": "John",
+                      "chatsCount": 5
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
       }
     },
-    "/api/contact-groups": {
+    "/contact-groups": {
       "get": {
-        "tags": [
-          "contact-groups"
-        ],
         "summary": "[GET] api/contact-groups",
-        "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "Success 200",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"data\": [{ \"uuid\": \"group-uuid-123\", \"name\": \"VIP Customers\" }]\n}"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": [
+                    {
+                      "uuid": "group-uuid-123",
+                      "name": "VIP Customers"
+                    }
+                  ]
+                }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
           }
-        }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
       },
       "post": {
-        "tags": [
-          "contact-groups"
-        ],
         "summary": "[POST] api/contact-groups",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
+        "description": "",
+        "tags": [
+          "Contact"
         ],
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "id": "group-uuid-123",
+                  "message": "Request processed successfully"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
           }
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            " application/json; charset=utf-8": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the contact group."
-                  }
-                },
-                "required": [
-                  "name"
-                ]
-              }
-            }
+        "security": [
+          {
+            "apiToken": []
           }
-        }
+        ]
       }
     },
-    "/api/contact-groups/{uuid}": {
+    "/contact-groups/{uuid}": {
       "put": {
-        "tags": [
-          "contact-groups"
-        ],
         "summary": "[PUT] api/contact-groups/{uuid}",
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
         "parameters": [
-                    {
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "id": "group-uuid-123",
+                  "message": "Request processed successfully"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
           }
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            " application/json; charset=utf-8": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Updated name of the contact group."
-                  }
-                },
-                "required": [
-                  "name"
-                ]
-              }
-            }
+        "security": [
+          {
+            "apiToken": []
           }
-        }
+        ]
       },
       "delete": {
-        "tags": [
-          "contact-groups"
-        ],
         "summary": "[DELETE] api/contact-groups/{uuid}",
-        "parameters": [
-                    {
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-        "responses": {
-          "200": {
-            "description": "Deleted 200",
-            "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"id\": \"group-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
-          }
-        }
-      }
-    },
-    "/api/canned-replies": {
-      "get": {
+        "description": "",
         "tags": [
-          "canned-replies"
+          "Contact"
         ],
-        "summary": "[GET] api/canned-replies",
         "parameters": [
           {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success 200",
-            "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"data\": [{ \"uuid\": \"canned-uuid-123\", \"title\": \"Greeting\", \"message\": \"Hello\" }]\n}"
-              }
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
           }
-        }
-      },
-      "post": {
-        "tags": [
-          "canned-replies"
         ],
-        "summary": "[POST] api/canned-replies",
-
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "id": "group-uuid-123",
+                  "message": "Request processed successfully"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
           }
         },
-        "requestBody": {
-          "required": true,
-          "content": {
-            " application/json; charset=utf-8": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the canned reply."
-                  },
-                  "trigger": {
-                    "type": "string",
-                    "description": "Trigger phrase to match."
-                  },
-                  "match_criteria": {
-                    "type": "string",
-                    "description": "Match criteria: contains/exact (optional)."
-                  },
-                  "response_type": {
-                    "type": "string",
-                    "description": "Response type (text/media)."
-                  },
-                  "response": {
-                    "type": "string",
-                    "description": "Response content."
-                  }
-                },
-                "required": [
-                  "name",
-                  "trigger",
-                  "match_criteria",
-                  "response_type",
-                  "response"
-                ]
-              }
-            }
+        "security": [
+          {
+            "apiToken": []
           }
-        }
+        ]
       }
     },
-    "/api/canned-replies/{uuid}": {
-      "put": {
+    "/canned-replies": {
+      "get": {
+        "summary": "[GET] api/canned-replies",
+        "description": "",
         "tags": [
-          "canned-replies"
+          "Contact"
         ],
-        "summary": "[PUT] api/canned-replies/{uuid}",
-        "parameters": [
-                    {
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": [
+                    {
+                      "uuid": "canned-uuid-123",
+                      "title": "Greeting",
+                      "message": "Hello"
+                    }
+                  ]
                 }
               }
             }
@@ -1303,181 +1106,208 @@
             "description": "Unauthorized - Invalid or missing token"
           }
         },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "[POST] api/canned-replies",
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string",
-                    "description": "Name of the canned reply."
+                    "type": "string"
                   },
                   "trigger": {
-                    "type": "string",
-                    "description": "Trigger phrase to match."
+                    "type": "string"
                   },
                   "match_criteria": {
-                    "type": "string",
-                    "description": "Match criteria: contains/exact (optional)."
+                    "type": "string"
                   },
                   "response_type": {
-                    "type": "string",
-                    "description": "Response type (text/media)."
+                    "type": "string"
                   },
                   "response": {
-                    "type": "string",
-                    "description": "Response content."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "name",
-                  "trigger",
-                  "match_criteria",
-                  "response_type",
-                  "response"
-                ]
+                }
               }
             }
           }
-        }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "id": "canned-uuid-123",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/canned-replies/{uuid}": {
+      "put": {
+        "summary": "[PUT] api/canned-replies/{uuid}",
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "trigger": {
+                    "type": "string"
+                  },
+                  "match_criteria": {
+                    "type": "string"
+                  },
+                  "response_type": {
+                    "type": "string"
+                  },
+                  "response": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "id": "canned-uuid-123",
+                  "message": "Request processed successfully"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
       },
       "delete": {
-        "tags": [
-          "canned-replies"
-        ],
         "summary": "[DELETE] api/canned-replies/{uuid}",
+        "description": "",
+        "tags": [
+          "Contact"
+        ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/X-Custom-Header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Deleted 200",
-            "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"id\": \"canned-uuid-123\",\n  \"message\": \"Request processed successfully\"\n}"
-              }
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
           }
-        }
-      }
-    },
-    "/api/templates": {
-      "get": {
-        "tags": [
-          "templates"
         ],
-        "summary": "[GET] api/templates",
-        "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
         "responses": {
           "200": {
-            "description": "Templates 200",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"statusCode\": 200,\n  \"data\": []\n}"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
-          }
-        }
-      }
-    },
-    "/api/get-conversations/{uuid?}": {
-      "get": {
-        "tags": [
-          "get-conversations"
-        ],
-        "summary": "[GET] api/get-conversations/{uuid?}",
-        "parameters": [
-                    {
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                 "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "id": "canned-uuid-123",
+                  "message": "Request processed successfully"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
           }
-        }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
       }
     },
-    "/api/tickets/{uuid}/update": {
-      "post": {
+    "/templates": {
+      "get": {
+        "summary": "[GET] api/templates",
+        "description": "",
         "tags": [
-          "tickets"
+          "Contact"
         ],
-        "summary": "[POST] api/tickets/{uuid}/update",
-        "parameters": [
-                    {
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": []
                 }
               }
             }
@@ -1486,186 +1316,312 @@
             "description": "Unauthorized - Invalid or missing token"
           }
         },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/get-conversations/{uuid}": {
+      "get": {
+        "summary": "[GET] api/get-conversations/{uuid?}",
+        "description": "",
+        "tags": [
+          "Channel"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/get-conversations": {
+      "get": {
+        "summary": "[GET] api/get-conversations/{uuid?}",
+        "description": "",
+        "tags": [
+          "Channel"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/tickets/{uuid}/update": {
+      "post": {
+        "summary": "[POST] api/tickets/{uuid}/update",
+        "description": "",
+        "tags": [
+          "Tickets"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "status": {
-                    "type": "string",
-                    "description": "Ticket status: open or closed."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "status"
-                ]
+                }
               }
             }
           }
-        }
-      }
-    },
-    "/api/tickets/{uuid}/assign": {
-      "post": {
-        "tags": [
-          "tickets"
-        ],
-        "summary": "[POST] api/tickets/{uuid}/assign",
-        "parameters": [
-                    {
-                        "name": "uuid",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+        },
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "status": "success",
+                  "message": "Status updated successfully!"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
           }
         },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/tickets/{uuid}/assign": {
+      "post": {
+        "summary": "[POST] api/tickets/{uuid}/assign",
+        "description": "",
+        "tags": [
+          "Tickets"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "user_id": {
-                    "type": "string",
-                    "description": "User id to assign the ticket to."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "user_id"
-                ]
+                }
               }
             }
           }
-        }
-      }
-    },
-    "/api/tickets/status-counts": {
-      "post": {
-        "tags": [
-          "tickets"
-        ],
-        "summary": "[POST] api/tickets/status-counts",
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
+        },
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object"
+              "application/json": {
+                "example": {
+                  "status": "success",
+                  "message": "Ticket assigned successfully!"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          },
+          "404": {
+            "description": "Not Found - Resource does not exist"
           }
         },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/tickets/status-counts": {
+      "post": {
+        "summary": "[POST] api/tickets/status-counts",
+        "description": "",
+        "tags": [
+          "Tickets"
+        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
-            " application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "organization": {
-                    "type": "string",
-                    "description": "Organization id (required)."
+                    "type": "string"
                   },
                   "user_id": {
-                    "type": "string",
-                    "description": "User id (required)."
+                    "type": "string"
                   }
-                },
-                "required": [
-                  "organization",
-                  "user_id"
-                ]
+                }
               }
             }
           }
-        }
-      }
-    },
-    "/api/team": {
-      "get": {
-        "tags": [
-          "team"
-        ],
-        "summary": "[GET] api/team",
-        "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-        "parameters": [
-                    {
-                        "name": "organization",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
+        },
         "responses": {
           "200": {
-            "description": "Team List 200",
+            "description": "Success",
             "content": {
-              " application/json; charset=utf-8": {
-                "example": "{\n  \"status\": \"success\",\n  \"data\": []\n}"
+              "application/json": {
+                "example": {
+                  "statusCode": 200,
+                  "data": {
+                    "unassigned": 0,
+                    "open": 1,
+                    "closed": 2,
+                    "all": 3
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing token"
+          },
+          "400": {
+            "description": "Bad Request - Invalid input"
+          }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
+      }
+    },
+    "/team": {
+      "get": {
+        "summary": "[GET] api/team",
+        "description": "",
+        "tags": [
+          "Team"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "success",
+                  "data": []
+                }
               }
             }
           },
           "401": {
             "description": "Unauthorized - Invalid or missing token"
           }
-        }
+        },
+        "security": [
+          {
+            "apiToken": []
+          }
+        ]
       }
     }
   },
   "components": {
-        "securitySchemes": {
-            "sanctum": {
-                "type": "apiKey",
-                "description": "Enter token in format (Bearer <token>)",
-                "name": "Authorization",
-                "in": "header"
-            }
-        }
-    },
-  "security": [
+    "securitySchemes": {
+      "apiToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "API token. Use 'Bearer <token>' format."
+      }
+    }
+  },
+  "tags": [
     {
-      "bearerAuth": []
+      "name": "Message",
+      "description": "Endpoints related to Message"
+    },
+    {
+      "name": "Contact",
+      "description": "Endpoints related to Contact"
+    },
+    {
+      "name": "Tickets",
+      "description": "Endpoints related to Tickets"
+    },
+    {
+      "name": "Team",
+      "description": "Endpoints related to Team"
+    },
+    {
+      "name": "Channel",
+      "description": "Endpoints related to Channel"
     }
   ]
 }
