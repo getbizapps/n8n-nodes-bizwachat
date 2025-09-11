@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "BizCRM Chats",
+    "title": "Bizwachat",
     "description": "API Documentation",
     "version": "1.0.0",
     "termsOfService": "https://bizwachat.com/terms",
@@ -26,8 +26,9 @@
   "paths": {
     "/check-api-key": {
       "get": {
-        "summary": "[GET] api/check-api-key",
-        "description": "",
+        "summary": "Check API Key",
+        "description": "Validate your api key",
+        "operationId": "get-check-api-key",
         "tags": [
           "Channel"
         ],
@@ -47,8 +48,9 @@
         ]
       },
       "post": {
-        "summary": "[POST] api/check-api-key",
-        "description": "",
+        "summary": "Check API Key with Post Method",
+        "description": "Validate your api key",
+        "operationId": "post-check-api-key",
         "tags": [
           "Channel"
         ],
@@ -73,8 +75,9 @@
     },
     "/login": {
       "post": {
-        "summary": "[POST] api/login",
-        "description": "",
+        "summary": "Login User",
+        "description": "Authenticate user and return access token.",
+        "operationId": "post-login",
         "tags": [
           "Channel"
         ],
@@ -120,8 +123,9 @@
     },
     "/send": {
       "post": {
-        "summary": "[POST] api/send",
-        "description": "",
+        "summary": "Send Text Message",
+        "description": "Send a text message to a specified phone number.",
+        "operationId": "send-text-message",
         "tags": [
           "Message"
         ],
@@ -203,8 +207,9 @@
     },
     "/send/template": {
       "post": {
-        "summary": "[POST] api/send/template",
-        "description": "",
+        "summary": "Send Template Message",
+        "description": "Send a template message to a specified phone number.",
+        "operationId": "send-template-message",
         "tags": [
           "Message"
         ],
@@ -268,8 +273,9 @@
     },
     "/send/media": {
       "post": {
-        "summary": "[POST] api/send/media",
-        "description": "",
+        "summary": "Send Media Message",
+        "description": "Send a media message to a specified phone number.",
+        "operationId": "send-media-message",
         "tags": [
           "Message"
         ],
@@ -337,8 +343,9 @@
     },
     "/upload/media": {
       "post": {
-        "summary": "[POST] api/upload/media",
-        "description": "",
+        "summary": "Upload Media File",
+        "description": "Upload a media file to the server.",
+        "operationId": "upload-media-file",
         "tags": [
           "Channel"
         ],
@@ -393,8 +400,9 @@
     },
     "/campaigns": {
       "post": {
-        "summary": "[POST] api/campaigns",
-        "description": "",
+        "summary": "Send Campaign",
+        "description": "Send a campaign message to a specified audience.",
+        "operationId": "send-campaign",
         "tags": [
           "Message"
         ],
@@ -445,8 +453,9 @@
     },
     "/contacts/{uuid}": {
       "get": {
-        "summary": "[GET] api/contacts/{uuid}",
-        "description": "",
+        "summary": "Get Contact by UUID",
+        "description": "Retrieve a contact's details using their unique identifier.",
+        "operationId": "get-contact-by-uuid",
         "tags": [
           "Contact"
         ],
@@ -490,8 +499,9 @@
         ]
       },
       "put": {
-        "summary": "[PUT] api/contacts/{uuid}",
-        "description": "",
+        "summary": "Update Contact by UUID",
+        "description": "Update a contact's details using their unique identifier.",
+        "operationId": "update-contact-by-uuid",
         "tags": [
           "Contact"
         ],
@@ -563,8 +573,9 @@
         ]
       },
       "delete": {
-        "summary": "[DELETE] api/contacts/{uuid}",
-        "description": "",
+        "summary": "Delete Contact by UUID",
+        "description": "Remove a contact from the system using their unique identifier.",
+        "operationId": "delete-contact-by-uuid",
         "tags": [
           "Contact"
         ],
@@ -610,8 +621,9 @@
     },
     "/contacts": {
       "get": {
-        "summary": "[GET] api/contacts",
-        "description": "",
+        "summary": "Get Contacts",
+        "description": "Retrieve a list of all contacts.",
+        "operationId": "get-contacts",
         "tags": [
           "Contact"
         ],
@@ -648,8 +660,9 @@
         ]
       },
       "post": {
-        "summary": "[POST] api/contacts",
-        "description": "",
+        "summary": "Store Contact",
+        "description": "Create a new contact in the system.",
+        "operationId": "store-contact",
         "tags": [
           "Contact"
         ],
@@ -711,8 +724,9 @@
     },
     "/contacts/{uuid}/notes": {
       "get": {
-        "summary": "[GET] api/contacts/{uuid}/notes",
-        "description": "",
+        "summary": "Get Notes for Contact by UUID",
+        "description": "Retrieve all notes associated with a specific contact.",
+        "operationId": "get-notes-for-contact-by-uuid",
         "tags": [
           "Contact"
         ],
@@ -746,8 +760,9 @@
     },
     "/contacts/notes": {
       "post": {
-        "summary": "[POST] api/contacts/notes",
-        "description": "",
+        "summary": "Add Note to Contact",
+        "description": "Attach a note to a specific contact.",
+        "operationId": "add-note-to-contact",
         "tags": [
           "Contact"
         ],
@@ -800,8 +815,9 @@
     },
     "/contacts/search": {
       "post": {
-        "summary": "[POST] api/contacts/search",
-        "description": "",
+        "summary": "Search Contacts",
+        "description": "Search for contacts based on a query.",
+        "operationId": "search-contacts",
         "tags": [
           "Contact"
         ],
@@ -863,8 +879,9 @@
     },
     "/contact-groups": {
       "get": {
-        "summary": "[GET] api/contact-groups",
-        "description": "",
+        "summary": "Get all Contact Groups",
+        "description": "Retrieve a list of all contact groups.",
+        "operationId": "get-contact-groups",
         "tags": [
           "Contact"
         ],
@@ -897,8 +914,9 @@
         ]
       },
       "post": {
-        "summary": "[POST] api/contact-groups",
-        "description": "",
+        "summary": "Create Contact Group",
+        "description": "Create a new contact group.",
+        "operationId": "create-contact-group",
         "tags": [
           "Contact"
         ],
@@ -948,8 +966,9 @@
     },
     "/contact-groups/{uuid}": {
       "put": {
-        "summary": "[PUT] api/contact-groups/{uuid}",
-        "description": "",
+        "summary": "Update Contact Group",
+        "description": "Update an existing contact group.",
+        "operationId": "update-contact-group",
         "tags": [
           "Contact"
         ],
@@ -1009,8 +1028,9 @@
         ]
       },
       "delete": {
-        "summary": "[DELETE] api/contact-groups/{uuid}",
-        "description": "",
+        "summary": "Delete Contact Group",
+        "description": "Delete a specific contact group.",
+        "operationId": "delete-contact-group",
         "tags": [
           "Contact"
         ],
@@ -1056,8 +1076,9 @@
     },
     "/canned-replies": {
       "get": {
-        "summary": "[GET] api/canned-replies",
-        "description": "",
+        "summary": "Get Canned Replies",
+        "description": "Retrieve a list of canned replies.",
+        "operationId": "get-canned-replies",
         "tags": [
           "Contact"
         ],
@@ -1091,8 +1112,9 @@
         ]
       },
       "post": {
-        "summary": "[POST] api/canned-replies",
-        "description": "",
+        "summary": "Create Canned Reply",
+        "description": "Create a new canned reply.",
+        "operationId": "create-canned-reply",
         "tags": [
           "Contact"
         ],
@@ -1158,8 +1180,9 @@
     },
     "/canned-replies/{uuid}": {
       "put": {
-        "summary": "[PUT] api/canned-replies/{uuid}",
-        "description": "",
+        "summary": "Update Canned Reply",
+        "description": "Update an existing canned reply.",
+        "operationId": "update-canned-reply",
         "tags": [
           "Contact"
         ],
@@ -1235,8 +1258,9 @@
         ]
       },
       "delete": {
-        "summary": "[DELETE] api/canned-replies/{uuid}",
-        "description": "",
+        "summary": "Delete Canned Reply",
+        "description": "Delete a specific canned reply.",
+        "operationId": "delete-canned-reply",
         "tags": [
           "Contact"
         ],
@@ -1282,8 +1306,9 @@
     },
     "/templates": {
       "get": {
-        "summary": "[GET] api/templates",
-        "description": "",
+        "summary": "Get WhatsApp Templates",
+        "description": "Retrieve a list of WhatsApp templates.",
+        "operationId": "get-whatsapp-templates",
         "tags": [
           "Contact"
         ],
@@ -1313,8 +1338,9 @@
     },
     "/get-conversations/{uuid}": {
       "get": {
-        "summary": "[GET] api/get-conversations/{uuid?}",
-        "description": "",
+        "summary": "Get Conversation by UUID",
+        "description": "Retrieve a specific conversation by its UUID.",
+        "operationId": "get-conversation-by-uuid",
         "tags": [
           "Channel"
         ],
@@ -1346,33 +1372,11 @@
         ]
       }
     },
-    "/get-conversations": {
-      "get": {
-        "summary": "[GET] api/get-conversations/{uuid?}",
-        "description": "",
-        "tags": [
-          "Channel"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized - Invalid or missing token"
-          }
-        },
-        "security": [
-          {
-            "apiToken": []
-          }
-        ]
-      }
-    },
     "/tickets/{uuid}/update": {
       "post": {
-        "summary": "[POST] api/tickets/{uuid}/update",
-        "description": "",
+        "summary": "Update Ticket Status",
+        "description": "Update the status of a specific ticket.",
+        "operationId": "update-ticket-status",
         "tags": [
           "Tickets"
         ],
@@ -1433,8 +1437,9 @@
     },
     "/tickets/{uuid}/assign": {
       "post": {
-        "summary": "[POST] api/tickets/{uuid}/assign",
-        "description": "",
+        "summary": "Assign Ticket to User",
+        "description": "Assign a specific ticket to a user.",
+        "operationId": "assign-ticket-to-user",
         "tags": [
           "Tickets"
         ],
@@ -1495,8 +1500,9 @@
     },
     "/tickets/status-counts": {
       "post": {
-        "summary": "[POST] api/tickets/status-counts",
-        "description": "",
+        "summary": "Get Ticket Status Counts",
+        "description": "Retrieve the count of tickets by their status.",
+        "operationId": "get-ticket-status-counts",
         "tags": [
           "Tickets"
         ],
@@ -1554,8 +1560,9 @@
     },
     "/team": {
       "get": {
-        "summary": "[GET] api/team",
-        "description": "",
+        "summary": "Get Team Information",
+        "description": "Retrieve information about the team.",
+        "operationId": "get-team-information",
         "tags": [
           "Team"
         ],
@@ -1594,26 +1601,5 @@
       }
     }
   },
-  "tags": [
-    {
-      "name": "Message",
-      "description": "Endpoints related to Message"
-    },
-    {
-      "name": "Contact",
-      "description": "Endpoints related to Contact"
-    },
-    {
-      "name": "Tickets",
-      "description": "Endpoints related to Tickets"
-    },
-    {
-      "name": "Team",
-      "description": "Endpoints related to Team"
-    },
-    {
-      "name": "Channel",
-      "description": "Endpoints related to Channel"
-    }
-  ]
+  "x-original-swagger-version": "2.0"
 }
