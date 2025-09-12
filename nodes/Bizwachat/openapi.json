@@ -15,16 +15,16 @@
   },
   "servers": [
     {
-      "url": "https://bizwachat.com/api"
+      "url": "https://bizwachat.com"
     }
   ],
   "security": [
     {
-      "apiToken": []
+      "bearerAuth": []
     }
   ],
   "paths": {
-    "/check-api-key": {
+    "/api/check-api-key": {
       "get": {
         "summary": "Check API Key",
         "description": "Validate your api key",
@@ -43,7 +43,7 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       },
@@ -68,12 +68,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/login": {
+    "/api/login": {
       "post": {
         "summary": "Login User",
         "description": "Authenticate user and return access token.",
@@ -116,12 +116,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/send": {
+    "/api/send": {
       "post": {
         "summary": "Send Text Message",
         "description": "Send a text message to a specified phone number.",
@@ -200,12 +200,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/send/template": {
+    "/api/send/template": {
       "post": {
         "summary": "Send Template Message",
         "description": "Send a template message to a specified phone number.",
@@ -266,12 +266,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/send/media": {
+    "/api/send/media": {
       "post": {
         "summary": "Send Media Message",
         "description": "Send a media message to a specified phone number.",
@@ -336,12 +336,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/upload/media": {
+    "/api/upload/media": {
       "post": {
         "summary": "Upload Media File",
         "description": "Upload a media file to the server.",
@@ -393,12 +393,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/campaigns": {
+    "/api/campaigns": {
       "post": {
         "summary": "Send Campaign",
         "description": "Send a campaign message to a specified audience.",
@@ -446,12 +446,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/contacts/{uuid}": {
+    "/api/contacts/{uuid}": {
       "get": {
         "summary": "Get Contact by UUID",
         "description": "Retrieve a contact's details using their unique identifier.",
@@ -494,7 +494,7 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       },
@@ -568,7 +568,7 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       },
@@ -614,12 +614,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/contacts": {
+    "/api/contacts": {
       "get": {
         "summary": "Get Contacts",
         "description": "Retrieve a list of all contacts.",
@@ -655,7 +655,7 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       },
@@ -717,12 +717,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/contacts/{uuid}/notes": {
+    "/api/contacts/{uuid}/notes": {
       "get": {
         "summary": "Get Notes for Contact by UUID",
         "description": "Retrieve all notes associated with a specific contact.",
@@ -753,12 +753,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/contacts/notes": {
+    "/api/contacts/notes": {
       "post": {
         "summary": "Add Note to Contact",
         "description": "Attach a note to a specific contact.",
@@ -808,12 +808,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/contacts/search": {
+    "/api/contacts/search": {
       "post": {
         "summary": "Search Contacts",
         "description": "Search for contacts based on a query.",
@@ -872,12 +872,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/contact-groups": {
+    "/api/contact-groups": {
       "get": {
         "summary": "Get all Contact Groups",
         "description": "Retrieve a list of all contact groups.",
@@ -909,7 +909,7 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       },
@@ -959,12 +959,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/contact-groups/{uuid}": {
+    "/api/contact-groups/{uuid}": {
       "put": {
         "summary": "Update Contact Group",
         "description": "Update an existing contact group.",
@@ -1023,7 +1023,7 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       },
@@ -1069,12 +1069,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/canned-replies": {
+    "/api/canned-replies": {
       "get": {
         "summary": "Get Canned Replies",
         "description": "Retrieve a list of canned replies.",
@@ -1107,7 +1107,7 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       },
@@ -1173,12 +1173,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/canned-replies/{uuid}": {
+    "/api/canned-replies/{uuid}": {
       "put": {
         "summary": "Update Canned Reply",
         "description": "Update an existing canned reply.",
@@ -1253,7 +1253,7 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       },
@@ -1299,12 +1299,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/templates": {
+    "/api/templates": {
       "get": {
         "summary": "Get WhatsApp Templates",
         "description": "Retrieve a list of WhatsApp templates.",
@@ -1331,12 +1331,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/get-conversations/{uuid}": {
+    "/api/get-conversations/{uuid}": {
       "get": {
         "summary": "Get Conversation by UUID",
         "description": "Retrieve a specific conversation by its UUID.",
@@ -1367,12 +1367,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/tickets/{uuid}/update": {
+    "/api/tickets/{uuid}/update": {
       "post": {
         "summary": "Update Ticket Status",
         "description": "Update the status of a specific ticket.",
@@ -1430,12 +1430,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/tickets/{uuid}/assign": {
+    "/api/tickets/{uuid}/assign": {
       "post": {
         "summary": "Assign Ticket to User",
         "description": "Assign a specific ticket to a user.",
@@ -1493,12 +1493,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/tickets/status-counts": {
+    "/api/tickets/status-counts": {
       "post": {
         "summary": "Get Ticket Status Counts",
         "description": "Retrieve the count of tickets by their status.",
@@ -1553,12 +1553,12 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     },
-    "/team": {
+    "/api/team": {
       "get": {
         "summary": "Get Team Information",
         "description": "Retrieve information about the team.",
@@ -1585,21 +1585,21 @@
         },
         "security": [
           {
-            "apiToken": []
+            "bearerAuth": []
           }
         ]
       }
     }
   },
   "components": {
-    "securitySchemes": {
-      "apiToken": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT",
-        "description": "API token. Use 'Bearer <token>' format."
-      }
-    }
-  },
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
   "x-original-swagger-version": "2.0"
 }
