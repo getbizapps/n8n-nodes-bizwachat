@@ -1,49 +1,66 @@
-<p align="center">
-  <img src="https://bizwachat.com/media/public/6SdyZBP5DKcS7U7WZaM5xZuIBh0deEoXvtHk13q3.png" alt="Bizwachat Logo" width="160"/>
-</p>
+# n8n-nodes-bizwachat-v3
 
-[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
+Hand-authored BizwaChat n8n nodes for the tenant API-management integration surface.
 
+## What this package includes
 
-## 📝 Release Notes & Functionality Overview
+- `BizwaChat v3`: send text, interactive, media, typing indicators, and approved template messages.
+- `BizwaChat Trigger`: receive BizwaChat webhook events in n8n.
+- Tenant resources: create, read, update, and delete contacts, groups, sources, and statuses directly from n8n.
+- Dynamic template parameter mapping: select a template from a dropdown, then fill the exact variables BizwaChat expects. No JSON field is required.
 
-### 🚀 Latest Changes
+## Credentials
 
-- **API Alignment:**  
-  All node operations and payloads now strictly follow the latest Bizwachat API reference:
-  - **Send Text Message:** Uses `POST /api/send` with support for `phone`, `message`, `header`, `footer`, and `buttons`.
-  - **Send Media Message:** Uses `POST /api/send/media` with `phone`, `media_type`, `media_url`, `caption`, and `file_name`.
-  - **Send Template Message:** Uses `POST /api/send/template` with a `template` object (`name`, `language`, `components`) as per API docs.
-- **Legacy Logic Removed:**  
-  All deprecated endpoints and legacy payloads have been removed for clarity and reliability.
-- **UI & Parameter Improvements:**  
-  Node properties and UI fields have been updated for clarity, validation, and to match the latest API requirements.
-- **Media Upload:**  
-  Supports uploading media files and using the returned URL in media messages.
-- **Template Variable Mapping:**  
-  Dynamic mapping for template variables, including support for body, header, and button parameters.
-- **Error Handling:**  
-  Robust error handling and input validation for all API calls.
-- **Documentation & Comments:**  
-  Inline comments and descriptions updated for easier usage and maintenance.
+Create a `BizwaChat Tenant API` credential with:
 
-### 💡 Functionality
+- `Base URL`: your BizwaChat app URL, for example `https://bizwachat.com`
+- `API Path Prefix`: defaults to `/api/v3`
+- `Tenant Subdomain`: the tenant slug, for example `test`
+- `API Token`: generated in `Settings > System Settings > API Management`
 
-- **Send WhatsApp Text Messages:**  
-  With optional headers, footers, and interactive buttons.
-- **Send WhatsApp Media Messages:**  
-  Supports images, videos, documents, and audio with captions and filenames.
-- **Send WhatsApp Template Messages:**  
-  Full support for template structure, language, and dynamic parameters.
-- **Media Upload:**  
-  Upload files to Bizwachat and use them in outgoing messages.
-- **Dynamic Template & Label Loading:**  
-  Fetch templates and labels directly from your Bizwachat account.
-- **Scheduling & Labels:**  
-  (If supported by your API) Schedule messages and assign labels.
+The package defaults to `/api/v3` because the public tenant API surface is versioned there. If your deployment exposes the tenant token API on a different prefix, change the credential value instead of editing the node.
 
----
+## Action node
 
-**For full API details, see the Bizwachat API Reference.**
+### Message operations
 
----
+- `Send Template`: fetches templates from BizwaChat, then renders the template placeholders, header inputs, and button parameters as fields.
+- `Send Text`: sends a plain WhatsApp message.
+- `Send Interactive`: sends a standalone reply-button or CTA URL message through `POST /api/v3/{subdomain}/messages/send-interactive`.
+- `Send Media`: sends media from either a URL or an incoming binary file.
+- `Send Typing Indicator`: sends a typing indicator using an existing message ID.
+
+### Lookup operations
+
+- `Template`: get one template or list templates.
+- `Template Bot`: get one template bot or list template bots.
+- `Message Bot`: get one message bot or list message bots.
+
+### Tenant resource operations
+
+- `Contact`: get, list, create, update, and delete contacts.
+- `Group`: get, list, create, update, and delete groups.
+- `Source`: get, list, create, update, and delete sources.
+- `Status`: get, list, create, update, and delete statuses.
+
+## Trigger node
+
+Use `BizwaChat Trigger` when you want BizwaChat to push events into n8n.
+
+1. Add the trigger node to your workflow.
+2. Copy the generated webhook URL.
+3. In BizwaChat, open `Settings > System Settings > Webhook Management`.
+4. Paste the n8n webhook URL and enable the events you want.
+
+The trigger supports the webhook event families currently present in the product:
+
+- `message.received`, `message.sent`, `message.status.update`
+- `contact.created`, `contact.updated`, `contact.deleted`
+- `source.created`, `source.updated`, `source.deleted`
+- `status.created`, `status.updated`, `status.deleted`
+- `whatsapp.*` forwarding events when the tenant also uses the WhatsApp resend flow
+
+## Notes
+
+- This package does not use generic JSON text inputs.
+- Template header file uploads are not included in this first package version. Use URL-based header media values for image, video, and document template headers.
