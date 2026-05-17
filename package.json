@@ -1,6 +1,6 @@
 {
-  "name": "n8n-nodes-bizwachat-v3",
-  "version": "3.0.0",
+  "name": "n8n-nodes-bizwachat",
+  "version": "2.0.0",
   "description": "Hand-authored Bizwachat n8n nodes for tenant API messaging, templates, bots, and webhook triggers.",
   "keywords": [
     "n8n-community-node-package",
@@ -28,9 +28,9 @@
     "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials shared README.md --write",
-    "lint": "eslint nodes credentials shared package.json",
-    "lintfix": "eslint nodes credentials shared package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials shared package.json"
+    "lint": "eslint --ext .ts,.json nodes credentials shared package.json",
+    "lintfix": "eslint --ext .ts,.json nodes credentials shared package.json --fix",
+    "prepublishOnly": "npm run build && eslint --ext .ts,.json -c .eslintrc.prepublish.js nodes credentials shared package.json"
   },
   "files": [
     "dist"

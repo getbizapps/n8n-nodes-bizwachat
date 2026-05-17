@@ -111,6 +111,7 @@ const contactFieldsCollection: INodeProperties = {
 			type: 'multiOptions',
 			default: [],
 			typeOptions: { loadOptionsMethod: 'getGroups' },
+			description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		},
 	],
 };
